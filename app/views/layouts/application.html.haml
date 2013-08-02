@@ -1,0 +1,33 @@
+!!!
+%html
+  %head
+  %title Gallery
+  = stylesheet_link_tag    "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+  %body
+    #header
+      = "privet ya header"
+
+    .container
+      = yield
+
+    #footer
+      #footer_nav_block
+        .footer_nav_block_items
+          %span
+            = 'kolya'
+        .footer_nav_block_items
+          %span
+            = 'sanya'
+        .footer_nav_block_items
+          %span
+            = 'yarik'
+        .footer_nav_block_items
+          %span
+            = 'i valera'
+        .footer_nav_block_items
+          %span
+            = 'i eshe valera'
+      #footer_footer
+        = 'Best Boobs 2013(c)'
