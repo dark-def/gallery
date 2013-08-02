@@ -2,7 +2,22 @@
 //= require bootstrap-responsive
 //= require font-awesome
 
+@font-face {
+  font-family: 'Quicksand';
+  //src: url('Quicksand-Bold.otf');
+  //src: url('Quicksand-BoldItalic.otf');
+  //src: url('Quicksand-Italic.otf');
+  //src: url('Quicksand-Light.otf');
+  //src: url('Quicksand-LightItalic.otf');
+  src: url('Quicksand-Regular.otf');
+  //src: url('Quicksand_Dash.otf');
+
+  font-weight: normal;
+  font-style: normal;
+}
+
 html, body {
+  font-family: "Quicksand";
   margin: 0;
   padding: 0;
 }
@@ -12,19 +27,30 @@ body {
 
 }
 
-#header {
-  min-height: 75px;
-  width: 100%;
-  position: relative;
-  background-color: #515151;
-  border-bottom: 3px solid black;
+.title {
+  font-size: 26px;
 }
 
-.container {
-  border: 1px solid yellow;
+#header h2 {
+  margin: 0;
+}
+
+#header {
+  padding-top: 20px;
+  min-height: 50px;
+  width: 100%;
+  position: relative;
+  background-color: #242424;
+  border-bottom: 3px solid black;
+  color: #FFFFFF;
 }
 
 //FOOTER
+
+#footer, #footer_nav_block {
+  color: #FFFFFF;
+  background: url("../drop_menu_bg.png");
+}
 
 #footer {
   z-index: 1;
@@ -56,12 +82,13 @@ body {
 }
 
 .footer_nav_block_items {
+  margin: 10px 0 0 5px;
   padding: 0 auto;
   float: left;
   display: table;
   width: 19%;
-  height: 100px;
-  border-right: 1px solid red;
+  height: 85px;
+  border-right: 1px solid #515151;
 }
 
 .footer_nav_block_items:last-child {
@@ -74,9 +101,4 @@ body {
   height: 25px;
   background-color: black;
   width: 100%;
-}
-
-.header_line {
-  height: 3px;
-  background-color: black;
 }

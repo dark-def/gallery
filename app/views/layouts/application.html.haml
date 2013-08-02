@@ -9,7 +9,12 @@
   = csrf_meta_tags
   %body
     #header
-      = "BOOBS"
+      .container
+        %span.title
+          = "Best Boobs"
+        .pull-right
+          %i.icon-facebook-sign.icon-3x
+          %i.icon-twitter-sign.icon-3x
 
     .container
       = yield
@@ -18,18 +23,18 @@
       #footer_nav_block
         .footer_nav_block_items
           %span
-            = 'kolya'
+            = 'HTML5'
         .footer_nav_block_items
           %span
-            = 'sanya'
+            = 'CSS3'
         .footer_nav_block_items
           %span
-            = 'yarik'
+            = 'RAILS'
         .footer_nav_block_items
           %span
-            = 'i valera'
+            = 'JAVASCRIPT'
         .footer_nav_block_items
           %span
-            = 'i eshe valera'
+            = 'AJAX'
       #footer_footer
         = 'Best Boobs 2013(c)'
