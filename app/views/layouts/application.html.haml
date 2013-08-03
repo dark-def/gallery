@@ -13,6 +13,12 @@
         %span.title
           = "Best Boobs"
         .pull-right
+          -if current_user
+            = "Hello, #{current_user.email}"
+            = link_to 'Logout', destroy_user_session_path, method: :delete
+          -else
+            = link_to 'Sign in', new_user_session_path
+            = link_to 'Registration', new_user_registration_path
           %i.icon-facebook-sign.icon-3x
           %i.icon-twitter-sign.icon-3x
 
