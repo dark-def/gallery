@@ -5,5 +5,6 @@ class GalleryController < ApplicationController
 
   def show
     @images = Image.find(params[:id])
+    render :text => 'RENDERRED OK'
   end
 end
