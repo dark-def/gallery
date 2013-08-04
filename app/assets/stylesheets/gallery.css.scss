@@ -2,3 +2,19 @@
 // They will automatically be included in application.css.scss.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#fader {
+  position: relative;
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  top: 20px;
+}
+
+#fader img {
+  position: absolute;
+  background-color: #f3f4ef; border: 1px solid #dedede; padding: 5px;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  height: auto;
+}

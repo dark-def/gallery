@@ -1,5 +1,7 @@
 Gallery::Application.routes.draw do
 
+  root :to => 'gallery#index'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
@@ -9,6 +11,6 @@ Gallery::Application.routes.draw do
   get "gallery/index"
   get "gallery/show"
 
-  root :to => 'gallery#index'
+
 
 end
