@@ -5,4 +5,4 @@ $(document).ready ->
   jQuery("#fader img:gt(0)").hide()
   setInterval (->
     jQuery("#fader :first-child").fadeTo(500, 0).hide().next("img").fadeTo(500, 1).end().appendTo "#fader"
-  ), 5000
+  ), 7500

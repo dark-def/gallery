@@ -11,7 +11,7 @@
     #header
       .container
         %span.title
-          = "Best Boobs"
+          = link_to "Best Boobs", root_path
         .pull-right
           -if current_user
             = "Hello, #{current_user.email}"
@@ -21,24 +21,16 @@
             = link_to 'Registration', new_user_registration_path
           %i.icon-facebook-sign.icon-3x
           %i.icon-twitter-sign.icon-3x
+
+
     = yield
 
     #footer
       #footer_nav_block
-        .footer_nav_block_items
-          %span
-            = 'HTML5'
-        .footer_nav_block_items
-          %span
-            = 'CSS3'
-        .footer_nav_block_items
-          %span
-            = 'RAILS'
-        .footer_nav_block_items
-          %span
-            = 'JAVASCRIPT'
-        .footer_nav_block_items
-          %span
-            = 'AJAX'
+        -@categories.each do |category|
+          .footer_nav_block_items
+            %span
+              = link_to category.title.upcase, show_categories_path(category.title)
+
       #footer_footer
         = 'Best Boobs 2013(c)'

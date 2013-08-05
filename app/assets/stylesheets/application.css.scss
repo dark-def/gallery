@@ -24,8 +24,9 @@ html, body {
 }
 
 body {
+  //height: 100%;
   background-color: #929292;
-  position: relative;
+  //position: relative;
 }
 
 .title {
@@ -44,6 +45,26 @@ body {
   background-color: #242424;
   border-bottom: 3px solid black;
   color: #FFFFFF;
+}
+
+#fader {
+  position: relative;
+  height: 90%;
+}
+
+#fader img {
+  height: 100%;
+  width: 100%;
+}
+
+.content_container {
+  position: relative;
+}
+
+.self_container {
+  margin: 0 auto;
+  //display: inline-block;
+  border: 1px solid red;
 }
 
 //FOOTER

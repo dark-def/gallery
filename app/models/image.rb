@@ -11,6 +11,11 @@
 #
 
 class Image < ActiveRecord::Base
-  attr_accessible :image, :title
+  attr_accessible :image, :title, :category_id
   mount_uploader :image, ImagesUploader
+
+  belongs_to :category
+
+  has_many :comments
+  has_many :likes
 end
