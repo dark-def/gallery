@@ -1,5 +1,9 @@
 Gallery::Application.routes.draw do
 
+  get "comment/new"
+
+  get "comment/create"
+
   root :to => 'gallery#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
