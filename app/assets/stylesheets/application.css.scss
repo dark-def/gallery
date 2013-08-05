@@ -1,6 +1,7 @@
 //= require bootstrap
 //= require bootstrap-responsive
 //= require font-awesome
+//= require gallery
 
 @font-face {
   font-family: 'Quicksand';
@@ -24,6 +25,7 @@ html, body {
 
 body {
   background-color: #929292;
+  position: relative;
 }
 
 .title {
