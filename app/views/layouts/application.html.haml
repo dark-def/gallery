@@ -12,15 +12,30 @@
       .container
         %span.title
           = link_to "Best Boobs", root_path
+
         .pull-right
-          -if current_user
-            = "Hello, #{current_user.email}"
-            = link_to 'Logout', destroy_user_session_path, method: :delete
-          -else
-            = link_to 'Sign in', new_user_session_path
-            = link_to 'Registration', new_user_registration_path
-          %i.icon-facebook-sign.icon-3x
-          %i.icon-twitter-sign.icon-3x
+          %span.login
+            -if current_user
+              = "Hello, #{current_user.email}"
+              = link_to 'Logout', destroy_user_session_path, method: :delete
+            -else
+              = link_to 'Sign in', new_user_session_path
+              = link_to 'Registration', new_user_registration_path
+          = link_to '/auth/facebook', :class => 'facebook' do
+            %i.icon-facebook-sign.icon-3x
+
+
+        %ul.nav.nav-tabs
+          %li.active
+            = link_to 'Categories'
+          %li
+            = link_to 'All boobs'
+          %li
+            = link_to 'All comments'
+          %li
+            = link_to 'User actions'
+
+
 
 
     = yield

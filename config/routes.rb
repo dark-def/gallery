@@ -1,8 +1,7 @@
 Gallery::Application.routes.draw do
 
-  #get "comment/new"
-  #
-  #get "comment/create"
+  get '/auth/:provider/callback' => 'authentications#create' # For socials networks
+  get '/auth/destroy' => 'authentications#destroy'
 
   root :to => 'images#index'
 
@@ -10,15 +9,11 @@ Gallery::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users
- # ActiveAdmin.routes(self)
 
   resources :images, only: [:index, :show, :show_categories] do
     resources :comments, only: [:new, :create]
   end
 
   get '/:category' => 'images#show_categories', :as => :show_categories
+
 end
-
-
-#resources :gallerIES, only: [:index, :show, :show_categories] do
-#  post 'galeries/show_categories', :action => :show_categories, :as => :show_categories

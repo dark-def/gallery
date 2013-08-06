@@ -15,9 +15,9 @@ $(document).ready(function(){
         {
             // Init variables and add new comment
             comment = HtmlEncode(response.responseJSON.comment.description);
-            name = response.responseJSON.comment.name;
+            name = response.responseJSON.name;
             $('.comments').append('<blockquote style ="display:none;">' +
-                '<b><span class ="comment_nickname text-primary">'+name+'</span></b><br>' +
+                '<span class ="comment_nickname text-primary">'+name+'</span><br>' +
                 '<span class = "comment_description">'+comment+'</span><br>' +
                 '<small class = "comment_time">just now</small>' +
                 '</blockquote>');

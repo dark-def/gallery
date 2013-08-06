@@ -1,7 +1,6 @@
-//= require bootstrap
-//= require bootstrap-responsive
 //= require font-awesome
 //= require gallery
+//= require twitter/bootstrap
 
 @font-face {
   font-family: 'Quicksand';
@@ -24,13 +23,15 @@ html, body {
 }
 
 body {
-  //height: 100%;
   background-color: #929292;
-  //position: relative;
 }
 
 blockquote small {
   color: #656565;
+}
+
+.login {
+  margin-right: 10px;
 }
 
 .title {
@@ -67,16 +68,23 @@ blockquote small {
 
 .self_container {
   margin: 0 auto;
-  //display: inline-block;
   border: 1px solid red;
 }
 
 .container_img {
-  //padding: 20px;
   position: relative;
   display: block;
   min-width: 500px;
-  width: 60%;
+  width: 70%;
+  margin: 0 auto;
+}
+
+.container_5_img {
+  padding-top: 50px;
+  position: relative;
+  display: block;
+  min-width: 500px;
+  width: 85%;
   margin: 0 auto;
 }
 
@@ -84,10 +92,37 @@ blockquote small {
   float: left;
 }
 
+.images_block {
+  display: inline-block;
+}
+
+.info_block {
+  text-align: center;
+}
+
+.comments {
+  width: 450px;
+  word-wrap: break-word;
+}
+
 .comment-form {
   padding: 20px;
   position: relative;
   float: left;
+}
+
+.comment_time {
+  position: relative;
+  float: right;
+}
+
+.pagination {
+  display: block;
+  text-align: center;
+}
+
+.icon-thumbs-up-alt {
+  cursor: pointer;
 }
 
 
