@@ -12,8 +12,11 @@ Gallery::Application.routes.draw do
 
   resources :images, only: [:index, :show, :show_categories] do
     resources :comments, only: [:new, :create]
+    #resources :likes, only: [:create, :destroy]
   end
 
+  get '/images/:id/dislike' => 'likes#destroy', :as => :i_dont_like_this
+  get '/images/:id/like' => 'likes#create', :as => :i_like_this
   get '/:category' => 'images#show_categories', :as => :show_categories
 
 end

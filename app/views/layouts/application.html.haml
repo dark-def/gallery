@@ -3,8 +3,6 @@
   %head
   %title Gallery
   = stylesheet_link_tag "application", :media => "all"
-  -#%link{:href => "../css/bootstrap.css", :rel => "stylesheet"}/
-  -#%link{:href => "../css/font-awesome.css", :rel => "stylesheet"}/
   = javascript_include_tag "application"
   = csrf_meta_tags
   %body
@@ -24,9 +22,8 @@
           = link_to '/auth/facebook', :class => 'facebook' do
             %i.icon-facebook-sign.icon-3x
 
-
         %ul.nav.nav-tabs
-          %li.active
+          %li
             = link_to 'Categories'
           %li
             = link_to 'All boobs'
@@ -34,9 +31,6 @@
             = link_to 'All comments'
           %li
             = link_to 'User actions'
-
-
-
 
     = yield
 

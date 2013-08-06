@@ -15,4 +15,5 @@
 //= require twitter/bootstrap
 //= require gallery
 //= require comment
+//= require like
 

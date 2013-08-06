@@ -3,8 +3,11 @@
     = image_tag @image.image, :height => 400, :width => 400
 
   .like_block
-    %i.icon-thumbs-up-alt.icon-2x
-    -#%i.icon-thumbs-up
+    = link_to i_like_this_path, :remote => true do
+      %i.icon-thumbs-up-alt.icon-2x
+    = @image.likes.count
+    = link_to i_dont_like_this_path, :remote => true do
+      %i.icon-thumbs-down-alt.icon-2x
 
   .comment-form
     .comments
