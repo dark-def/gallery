@@ -1,0 +1,12 @@
+.container_5_img
+  -@images.each do |image|
+    .images_block
+      .image
+        = link_to image_path(image) do
+          = image_tag image.image.url(:thumb)
+      .info_block
+        %i.icon-comments
+          = image.comments.count
+        %i.icon-heart
+          = image.likes.count
+  = paginate @images
