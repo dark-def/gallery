@@ -1,0 +1,46 @@
+!!!
+%html
+  %head
+  %title Gallery
+  = stylesheet_link_tag "application", :media => "all"
+  = javascript_include_tag "application"
+  = csrf_meta_tags
+  %body
+    #header
+      .container
+        %span.title
+          = link_to "Best Boobs", root_path
+
+        .pull-right
+          %span.login
+            -if current_user
+              = "Hello, #{current_user.email}"
+              = link_to 'Logout', destroy_user_session_path, method: :delete
+            -else
+              = link_to 'Sign in', new_user_session_path
+              = link_to 'Registration', new_user_registration_path
+          = link_to '/auth/facebook', :class => 'facebook' do
+            %i.icon-facebook-sign.icon-3x
+
+        %ul.nav.nav-tabs
+          %li
+            = link_to 'Categories'
+          %li
+            = link_to 'All boobs'
+          %li
+            = link_to 'All comments'
+          %li
+            = link_to 'User actions'
+
+    = yield
+
+    #footer
+      #footer_nav_block
+        -@categories = Category.all
+        -@categories.each do |category|
+          .footer_nav_block_items
+            %span
+              = link_to category.title.upcase, show_categories_path(category.title)
+
+      #footer_footer
+        = 'Best Boobs 2013(c)'
