@@ -1,23 +1,22 @@
 Gallery::Application.routes.draw do
 
-  get "comment/new"
+  #get "comment/new"
+  #
+  #get "comment/create"
 
-  get "comment/create"
-
-  root :to => 'gallery#index'
+  root :to => 'images#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
   devise_for :users
-  ActiveAdmin.routes(self)
+ # ActiveAdmin.routes(self)
 
-  resources :gallery, only: [:index, :show, :show_categories] do
-    #get 'category/show_categories', :action => :show_categories, :as => :show_categories
+  resources :images, only: [:index, :show, :show_categories] do
+    resources :comments, only: [:new, :create]
   end
 
-  #get '/auth/:provider/callback' => 'facebook#create'
-  get '/:category' => 'gallery#show_categories', :as => :show_categories
+  get '/:category' => 'images#show_categories', :as => :show_categories
 end
 
 

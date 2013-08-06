@@ -313,6 +313,7 @@ DEPENDENCIES
   factory_girl_rails
   font-awesome-rails
   gon
+  haml
   haml-rails
   html2haml
   hub

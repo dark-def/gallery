@@ -29,6 +29,10 @@ body {
   //position: relative;
 }
 
+blockquote small {
+  color: #656565;
+}
+
 .title {
   font-size: 26px;
 }
@@ -66,6 +70,26 @@ body {
   //display: inline-block;
   border: 1px solid red;
 }
+
+.container_img {
+  //padding: 20px;
+  position: relative;
+  display: block;
+  min-width: 500px;
+  width: 60%;
+  margin: 0 auto;
+}
+
+.img_show {
+  float: left;
+}
+
+.comment-form {
+  padding: 20px;
+  position: relative;
+  float: left;
+}
+
 
 //FOOTER
 

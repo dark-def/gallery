@@ -1,12 +1,14 @@
-class GalleryController < ApplicationController
+class ImagesController < ApplicationController
   def index
     @categories = Category.all
     @images = Image.all
   end
 
   def show
+
     @categories = Category.all
     @image = Image.find(params[:id])
+    @comments = @image.comments.page(params[:page]).per(5)
     #render :text => 'RENDERRED OK'
   end
 

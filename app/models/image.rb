@@ -11,7 +11,10 @@
 #
 
 class Image < ActiveRecord::Base
-  attr_accessible :image, :title, :category_id
+
+  #accepts_nested_attributes_for :comments
+
+  attr_accessible :image, :title, :category_id, :description
   mount_uploader :image, ImagesUploader
 
   belongs_to :category

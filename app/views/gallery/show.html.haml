@@ -1,8 +1,0 @@
-.container
-  = image_tag @image.image, :height => 400, :width => 400
-
-.comment-form
-  = form_for [@image, Comment.new], :remote => true, :html => {:class => 'form-inline'} do |f|
-    .input-append
-      = f.text_area :body, :placeholder => 'Comment'
-      = f.submit 'Add comment', class: 'btn btn-primary pull-right', id: 'comment-button'
