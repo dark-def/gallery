@@ -1,5 +1,6 @@
 Gallery::Application.routes.draw do
 
+  get '/categories' => 'images#categories', :as => :categories   # почему-то снизу он не работает :O
   get '/auth/:provider/callback' => 'authentications#create' # For socials networks
   get '/auth/destroy' => 'authentications#destroy'
 
@@ -10,7 +11,7 @@ Gallery::Application.routes.draw do
 
   devise_for :users
 
-  resources :images, only: [:index, :show, :show_categories] do
+  resources :images, only: [:index, :show, :categories, :show_categories] do
     resources :comments, only: [:new, :create]
     #resources :likes, only: [:create, :destroy]
   end

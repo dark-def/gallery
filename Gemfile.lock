@@ -134,6 +134,7 @@ GEM
       activesupport (>= 3.2, < 5)
     hashie (2.0.5)
     hike (1.2.3)
+    hirb (0.7.1)
     hpricot (0.8.6)
     html2haml (1.0.1)
       erubis (~> 2.7.0)
@@ -312,6 +313,7 @@ DEPENDENCIES
   gon
   haml
   haml-rails
+  hirb
   html2haml
   hub
   jquery-rails (~> 2.3.0)
