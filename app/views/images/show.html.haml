@@ -8,9 +8,9 @@
 
 
   .like_block
-    .like_counter
-      %b
-        = 'Like:'
+    %b
+      = 'Like:'
+      .like_counter
         = @image.likes.count
 
     .like_buttons
