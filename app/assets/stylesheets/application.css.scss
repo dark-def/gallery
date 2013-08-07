@@ -72,6 +72,7 @@ blockquote small {
 }
 
 .container_img {
+  min-height: 600px;
   position: relative;
   display: block;
   min-width: 500px;
@@ -79,13 +80,27 @@ blockquote small {
   margin: 0 auto;
 }
 
+.arrow_left, .arrow_right {
+  position: absolute;
+  top: 250px;
+}
+
+.arrow_left {
+  left: -150px;
+}
+
+.arrow_right {
+  right: -150px;
+}
+
 .container_5_img {
-  padding-top: 50px;
+  padding-top: 125px;
   position: relative;
   display: block;
   min-width: 500px;
   width: 85%;
   margin: 0 auto;
+  padding-bottom: 30px;
 }
 
 .like_counter {
@@ -145,8 +160,8 @@ blockquote small {
 }
 
 #global {
-  margin-bottom: 30px;
-  min-height: 600px;
+  //margin-bottom: 30px;
+  min-height: 650px;
   position: relative;
   width: 100%;
   height: 100%;
@@ -165,7 +180,6 @@ blockquote small {
   border-top: 3px solid black;
   width: 100%;
   position: relative;
-  bottom: 0;
   min-height: 100px;
   background-color: #515151;
 }

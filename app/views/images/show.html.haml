@@ -1,6 +1,11 @@
 .container_img
+  .arrow_left
+    %i.icon-chevron-left.icon-2x
   .img_show
     = image_tag @image.image, :height => 400, :width => 400
+  .arrow_right
+    %i.icon-chevron-right.icon-2x
+
 
   .like_block
     .like_counter
@@ -52,4 +57,4 @@
       = 'accaunt'
 
     .pagination
-      = paginate @comments
+      %b= paginate @comments
