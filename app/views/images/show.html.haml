@@ -4,7 +4,10 @@
 
   .like_block
     .like_counter
-      = @image.likes.count
+      %b
+        = 'Like:'
+        = @image.likes.count
+
     .like_buttons
       -if current_user
         -if current_user.likes.where("image_id = #{@image.id}").blank?
@@ -13,6 +16,9 @@
         -else
           = link_to i_dont_like_this_path, :remote => true do
             %i.icon-thumbs-down-alt.icon-2x
+    %b
+      = 'Comments:'
+      = @image.comments.count
 
   .comment-form
     .comments
