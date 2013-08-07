@@ -4,6 +4,8 @@ Gallery::Application.routes.draw do
   get '/auth/:provider/callback' => 'authentications#create' # For socials networks
   get '/auth/destroy' => 'authentications#destroy'
 
+  post 'admin/parse' => 'admin/parse#steal' # For parsing
+
   root :to => 'images#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

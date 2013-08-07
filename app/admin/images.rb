@@ -4,14 +4,10 @@ ActiveAdmin.register Image do
     column :id
     column :title
     column :category
-    default_actions
     column :image do |img|
       image_tag(img.image.url, height: 35)
     end
-  end
-
-  action_item do
-    link_to 'Parse', root_path
+    default_actions
   end
 
   form do |f|
