@@ -4,24 +4,27 @@ ActiveAdmin.register_page "Parse" do
   require 'open-uri'
 
   page_action :steal, :method => :post do
+    @categories = Category.all
+    @images2 = Array.new
 
-    @images = Array.new
-    site = params[:parse][:url]
-
-    doc = Nokogiri::HTML(open(site))
+    doc = Nokogiri::HTML(open(params[:parse][:url]))
 
     doc.css("img").each_with_index do |item, index|
-      @images[index] = item['src']
+      @images2[index] = item['src']
     end
-
+    @images = Kaminari.paginate_array(@images2).page(params[:page]).per(25)
+    #@images.page(params[:page]).per(20)
     render :layout => 'active_admin'
   end
 
-  page_action :save_img, :method => :post do
 
-    render :json => {}, :layout => false
+  #page_action :save_img, :method => :post do
+  #
+  #  render :json => {}, :layout => false
+  #end
+  action_item do
+    link_to 'ADD', 'admin_parse_path'
   end
-
 
 
 

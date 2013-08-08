@@ -10,6 +10,7 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
+@import "application.css.scss";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -29,9 +30,11 @@
 // .other_namespace    applies to a custom namespace named other (eg: /other)
 
 //
-//.stolen_pics {
-//  display: inline-block;
-//  width: 150px;
-//  height: 150px;
-//  border: 1px solid red;
-//}
+.stolen_pics {
+  display: inline-block;
+  max-width: 600px;
+  max-height: 600px;
+  border: 2px solid #929292!important;
+  border-radius: 10px;
+  overflow: hidden;
+}

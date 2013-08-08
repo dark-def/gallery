@@ -1,5 +1,14 @@
--@images.each do |link|
-  .stolen_pics
-    = image_tag link
+= form_for Image.new do |f|
+  -@images.each do |link|
+    .stolen_pics
+      .images_block
+        .image
+          = image_tag link
 
--#= image_tag @images
+        = f.check_box_tag(:select)
+
+        %select{:name=>'category'}
+          -@categories.each do |cat|
+            %option{:value=>"#{cat.id}"}=cat.title
+
+  %b= paginate @images
