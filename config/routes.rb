@@ -19,6 +19,7 @@ Gallery::Application.routes.draw do
     #resources :likes, only: [:create, :destroy]
   end
 
+  get '/all' => 'images#all', :as => :show_all
   get '/images/:id/dislike' => 'likes#destroy', :as => :i_dont_like_this
   get '/images/:id/like' => 'likes#create', :as => :i_like_this
   get '/:category' => 'images#show_categories', :as => :show_categories
