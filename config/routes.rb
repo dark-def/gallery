@@ -5,6 +5,7 @@ Gallery::Application.routes.draw do
   get '/auth/destroy' => 'authentications#destroy'
 
   post 'admin/parse' => 'admin/parse#steal' # For parsing
+  get 'admin/parse/save' => 'admin/parse#save', :as => :parsed_save # For parsing
 
   root :to => 'images#index'
 

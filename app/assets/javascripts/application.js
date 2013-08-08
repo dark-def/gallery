@@ -16,4 +16,3 @@
 //= require gallery
 //= require comment
 //= require like
-
