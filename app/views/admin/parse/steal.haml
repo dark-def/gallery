@@ -6,9 +6,6 @@
           = image_tag link
 
         = f.check_box_tag(:select)
+        = f.select_tag('category', options_for_select(@categories.collect do |cat| [cat.title] end))
 
-        %select{:name=>'category'}
-          -@categories.each do |cat|
-            %option{:value=>"#{cat.id}"}=cat.title
-
-  %b= paginate @images
+  = paginate @images
