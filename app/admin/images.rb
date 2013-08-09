@@ -28,7 +28,6 @@ ActiveAdmin.register Image do
 
     def new
       @image = Image.new
-      logger.info 'GGGGggggurda'*100
     end
 
     def create
@@ -38,6 +37,8 @@ ActiveAdmin.register Image do
       @image.title = params[:image][:image].original_filename
 
       if @image.save
+        @user_subscribe = @image.category.users.pluck(:email)
+        SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
         redirect_to admin_image_path(@image), notice: 'image was successfully created.'
       else
         render :new

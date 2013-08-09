@@ -28,8 +28,9 @@ ActiveAdmin.register_page "Parse" do
     title = params[:image][:url].split("/").last
 
     uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => params[:image][:url].split("/").last)
-    Image.create!(:image => uploaded_file, :category_id => get_cat.id, :title => title)
-
+    @image = Image.create!(:image => uploaded_file, :category_id => get_cat.id, :title => title)
+    @user_subscribe = @image.category.users.pluck(:email)
+    SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
     render :json => { :stat => 'succ' }
 
   end

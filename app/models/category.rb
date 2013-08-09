@@ -12,6 +12,8 @@ class Category < ActiveRecord::Base
   attr_accessible :title
 
   has_many :subscribes
+
+  has_many :users, :through => :subscribes
   has_many :images
 
 end
