@@ -15,9 +15,11 @@
           %span.login
             -if current_user
               = "Hello, #{current_user.email}"
-              = link_to 'Logout', destroy_user_session_path, method: :delete
+              = link_to destroy_user_session_path, method: :delete do
+                %i.icon-signout.icon-3x{ :title => 'Sign out'}
             -else
-              = link_to 'Sign in', new_user_session_path
+              = link_to new_user_session_path do
+                %i.icon-signin.icon-3x{ :title => 'Sign in'}
               = link_to 'Registration', new_user_registration_path
           = link_to '/auth/facebook', :class => 'facebook' do
             %i.icon-facebook-sign.icon-3x

@@ -1,3 +1,10 @@
+.subscribe
+  .sub
+    %b= params[:category].upcase
+  .text_sub
+    %small
+      = link_to 'subscribe'
+
 .container_5_img
   -@images.each do |image|
     .images_block
