@@ -3,7 +3,9 @@ ActiveAdmin.register Image do
   index do
     column :id
     column :title
-    column :category
+    column 'category' do |img|
+      img.category.title
+    end
     column :image do |img|
       image_tag(img.image.url, height: 15)
     end
@@ -19,6 +21,10 @@ ActiveAdmin.register Image do
   end
 
   controller do
+
+    def scoped_collection
+      Image.includes(:category)
+    end
 
     def new
       @image = Image.new
