@@ -7,6 +7,9 @@ Gallery::Application.routes.draw do
   post 'admin/parse' => 'admin/parse#steal' # For parsing
   get 'admin/parse/save' => 'admin/parse#save', :as => :parsed_save # For parsing
 
+  get '/subscribe/:title' => 'subscribes#create', :as => :subscribe
+  get '/unsubscribe/:title' => 'subscribes#destroy', :as => :unsubscribe
+
   root :to => 'images#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -14,6 +17,7 @@ Gallery::Application.routes.draw do
 
   devise_for :users
 
+  #resources :subscribe, only: [:create, :destroy]
   resources :images, only: [:index, :show, :categories, :show_categories] do
     resources :comments, only: [:new, :create]
     #resources :likes, only: [:create, :destroy]

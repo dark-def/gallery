@@ -3,7 +3,31 @@
     %b= params[:category].upcase
   .text_sub
     %small
-      = link_to 'subscribe'
+      -if current_user
+        -if current_user.subscribes.where("category_id = #{@category.id}").blank?
+          = link_to 'subscribe', subscribe_path(params[:category]), :remote => true
+        -else
+          = link_to 'unsubscribe', unsubscribe_path(params[:category]), :remote => true ,:class => 'unsibscribe'
+
+
+
+
+-#
+-#
+-#
+-#-if current_user
+-#        -if current_user.likes.where("image_id = #{@image.id}").blank?
+-#          = link_to i_like_this_path, :remote => true do
+-#            %i.icon-thumbs-up-alt.icon-2x
+-#        -else
+-#          = link_to i_dont_like_this_path, :remote => true do
+-#            %i.icon-thumbs-down-alt.icon-2x
+
+
+
+
+
+
 
 .container_5_img
   -@images.each do |image|

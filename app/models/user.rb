@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :uid
 
+  has_many :subscribes
   has_many :comments
   has_many :likes
 end

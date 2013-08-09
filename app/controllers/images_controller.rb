@@ -19,8 +19,8 @@ class ImagesController < ApplicationController
 
   def show_categories
     @categories = Category.all
-    category = Category.where(:title => "#{params[:category]}").first
-    @images = Image.where(:category_id => category.id).page(params[:page]).per(5)
+    @category = Category.where(:title => "#{params[:category]}").first
+    @images = Image.where(:category_id => @category.id).page(params[:page]).per(5)
   end
 
   def all
