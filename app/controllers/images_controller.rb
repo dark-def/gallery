@@ -20,11 +20,11 @@ class ImagesController < ApplicationController
   def show_categories
     @categories = Category.all
     @category = Category.where(:title => "#{params[:category]}").first
-    @images = Image.where(:category_id => @category.id).page(params[:page]).per(5)
+    @images = Image.where(:category_id => @category.id).order('created_at DESC').page(params[:page]).per(5)
   end
 
   def all
-    @images = Image.includes(:likes).page(params[:page]).per(5)
+    @images = Image.includes(:likes).order("created_at DESC").page(params[:page]).per(5)
   end
 
 

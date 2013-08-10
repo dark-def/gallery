@@ -15,4 +15,12 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :image
+
+  validates :description,
+            :presence => true,
+            :length => {:minimum => 2, :maximum => 1000}
+
+  validates :user_id, :image_id,
+            :presence=> true
+
 end

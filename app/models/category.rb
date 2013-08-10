@@ -16,4 +16,6 @@ class Category < ActiveRecord::Base
   has_many :users, :through => :subscribes
   has_many :images
 
+  validates :title, :presence=> true
+
 end

@@ -43,7 +43,7 @@
       -else
         = 'No one commented this boobs yet'
     -if user_signed_in?
-      = form_for [@image, Comment.new], :remote => true, :html => {:class => 'form-inline'} do |f|
+      = form_for [@image, @com = Comment.new], :remote => true, :html => {:class => 'form-inline'} do |f|
         .input-append
           = f.text_field :description, :placeholder => 'Comment'
           = f.submit 'Add comment', class: 'btn btn-primary ', id: 'comment-button'

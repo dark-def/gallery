@@ -32,4 +32,13 @@ class User < ActiveRecord::Base
   has_many :categories, :through => :subscribes
   has_many :comments
   has_many :likes
+
+  validates :name,
+            :presence => true,
+            :length => {:minimum => 2, :maximum => 30}
+
+  validates :email,
+            :presence => true,
+            :format => {:with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}
+
 end
