@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   has_many :categories, :through => :subscribes
   has_many :comments
   has_many :likes
+  has_many :events
 
   validates :name,
             :presence => true,

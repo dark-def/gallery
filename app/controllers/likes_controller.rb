@@ -1,8 +1,11 @@
 class LikesController < ApplicationController
 
-  before_filter :authenticate_user!, :only => [:create]
+  before_filter :authenticate_user!, :only => [:create, :destroy]
 
   def create
+
+    ActiveSupport::Notifications.instrument('likes.create', :user_id => current_user.id, :url => request.fullpath)
+
     image_id = params[:id]
     @like = current_user.likes.build
     @like.user_id = current_user.id
@@ -14,6 +17,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
+
+    ActiveSupport::Notifications.instrument('likes.destroy', :user_id => current_user.id, :url => request.fullpath)
+
     image_id = params[:id]
     like = current_user.likes.where("image_id = #{params[:id]}")
     if !like.blank?
