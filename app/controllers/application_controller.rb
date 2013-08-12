@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_filter :set_locale
+  after_filter :click_links
 
   protect_from_forgery
 
@@ -16,7 +17,9 @@ class ApplicationController < ActionController::Base
   end
 
   def click_links
-    ActiveSupport::Notifications.instrument('click_links', :user_id => current_user.id, :url => request.fullpath)
+    if current_user
+      ActiveSupport::Notifications.instrument('click_links', :user_id => current_user.id, :url => request.fullpath)
+    end
   end
 
 end

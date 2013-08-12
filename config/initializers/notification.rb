@@ -1,32 +1,3 @@
-#ActiveSupport::Notifications.subscribe "process_action.action_controller" do |name, start, finish, id, payload|
-#
-#    #if current_user
-#    #  @event = Event.new
-#    #  @event.user_id = current_user.id
-#    #  #@event.event = params[]
-#    #  @event.url = request.fullpath
-#    #  if @event.save
-#    #    render :json => {:action => @event}
-#    #  end
-#    #end
-#
-#    #  user_id    :integer
-#    #  event      :string(255)
-#    #  url        :string(255)
-#
-#
-#    #Event.create! do |event|
-#    #  event.url = payload[:path]
-#    #  event.user_id = current_user.id
-#    #  event.view_duration = payload[:view_runtime]
-#    #  event.db_duration = payload[:db_runtime]
-#    #end
-#
-#
-#end
-
-#Rails.logger.debug  "==================EARCH: #{payload[:url]} asd #{payload[:user_id]} asd #{name}"
-
 ActiveSupport::Notifications.subscribe 'likes.create' do |name, start, finish, id, payload|
   Event.create(:url => payload[:url], :user_id => payload[:user_id], :event => name)
 end
@@ -35,10 +6,28 @@ ActiveSupport::Notifications.subscribe 'likes.destroy' do |name, start, finish, 
   Event.create(:url => payload[:url], :user_id => payload[:user_id], :event => name)
 end
 
-#ActiveSupport::Notifications.subscribe 'click_links' do |name, start, finish, id, payload|
-#  Event.create(:url => payload[:url], :user_id => payload[:user_id], :event => 'Click on link' )
-#end
-
-ActiveSupport::Notifications.subscribe 'process_action.action_controller' do |name, start, finish, id, payload|
-  Event.create(:url => payload[:path], :event => 'Click on link', :user_id => payload[:user_id])
+ActiveSupport::Notifications.subscribe 'subscribe' do |name, start, finish, id, payload|
+  Event.create(:url => payload[:category], :user_id => payload[:user_id], :event => name)
 end
+
+ActiveSupport::Notifications.subscribe 'unsubscribe' do |name, start, finish, id, payload|
+  Event.create(:url => payload[:category], :user_id => payload[:user_id], :event => name)
+end
+
+ActiveSupport::Notifications.subscribe 'comment.create' do |name, start, finish, id, payload|
+  Event.create(:url => payload[:url], :user_id => payload[:user_id], :event => name)
+end
+
+ActiveSupport::Notifications.subscribe 'sign_in' do |name, start, finish, id, payload|
+  Event.create(:user_id => payload[:user].id, :event => name)
+end
+
+ActiveSupport::Notifications.subscribe 'sign_out' do |name, start, finish, id, payload|
+  Event.create(:user_id => payload[:user].id, :event => name)
+end
+
+ActiveSupport::Notifications.subscribe 'click_links' do |name, start, finish, id, payload|
+  Event.create(:url => payload[:url], :user_id => payload[:user_id], :event => 'Click on link' )
+end
+
+#Rails.logger.debug  "==================EARCH: #{payload[:url]} asd #{payload[:user_id]} asd #{name}"

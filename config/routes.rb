@@ -15,8 +15,7 @@ Gallery::Application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
-  devise_for :users
-
+  devise_for :users, :controllers => {:registrations => 'registrations',:sessions => 'sessions'}
   #resources :subscribe, only: [:create, :destroy]
   resources :images, only: [:index, :show, :categories, :show_categories] do
     resources :comments, only: [:new, :create]
