@@ -10,6 +10,15 @@ Gallery::Application.routes.draw do
   get '/subscribe/:title' => 'subscribes#create', :as => :subscribe
   get '/unsubscribe/:title' => 'subscribes#destroy', :as => :unsubscribe
 
+  get '/events/' => 'events#index', :as => :events
+  get '/events/:type/:id' => 'events#show', :as => :show_type
+  #get '/events/all/:id' => 'events#show', :as => :events_all
+  #get '/events/navigation/:id' => 'events#show', :as => :events_navigation
+  #get '/events/sign_in/:id' => 'events#show', :as => :events_sign_in
+  #get '/events/sign_out/:id' => 'events#show', :as => :events_sign_out
+  #get '/events/likes/:id' => 'events#show', :as => :events_likes
+  #get '/events/comments/:id' => 'events#show', :as => :events_comments
+
   root :to => 'images#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config

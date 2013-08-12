@@ -1,0 +1,28 @@
+.container_5_img
+  %table
+    %tr
+      %td
+        %b= 'USER'
+      %td{:colspan => 6}
+        %b= 'ACTION'
+        -@users.each do |user|
+          %tr
+            %td
+              %b= user.email
+            %td
+              = link_to 'All', show_type_path('all', user.id)
+              = '|'
+            %td
+              = link_to 'navigation', show_type_path('navigation', user.id)
+              = '|'
+            %td
+              = link_to 'sign in ', show_type_path('sign_in', user.id)
+              = '|'
+            %td
+              = link_to 'sign out', show_type_path('sign_out', user.id)
+              = '|'
+            %td
+              = link_to 'likes', show_type_path('likes', user.id)
+              = '|'
+            %td
+              = link_to 'comments', show_type_path('comments', user.id)

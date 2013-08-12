@@ -1,0 +1,13 @@
+.container_5_img
+  %b= @user.name
+  = @user.email
+  -@events.each do |event|
+    .d0
+      .d1
+        %b= event.id
+      .d1
+        = event.event
+      .d2
+        = event.url
+      .d1
+        = event.created_at
