@@ -86,15 +86,19 @@ blockquote small {
 }
 
 .arrow_left {
-  left: -150px;
+  left: -100px;
 }
 
 .arrow_right {
-  right: -150px;
+  right: -100px;
 }
 
 .cat_name {
   text-align: center;
+}
+
+.error_messages {
+  color: red;
 }
 
 .container_5_img {
@@ -140,6 +144,7 @@ blockquote small {
 }
 
 .comment-form {
+  width: 500px;
   padding: 20px;
   position: relative;
   float: left;
