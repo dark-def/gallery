@@ -14,25 +14,32 @@
         .pull-right
           %span.login
             -if current_user
-              = "Hello, #{current_user.email}"
+              = t('.hello')
+              = current_user.email
               = link_to destroy_user_session_path, method: :delete do
-                %i.icon-signout.icon-3x{ :title => 'Sign out'}
+                %i.icon-signout.icon-3x{ :title => t('.sign_out')}
             -else
               = link_to new_user_session_path do
-                %i.icon-signin.icon-3x{ :title => 'Sign in'}
-              = link_to 'Registration', new_user_registration_path
+                %i.icon-signin.icon-3x{ :title => t('.sign_in') }
+              = link_to t('.registration'), new_user_registration_path
           = link_to '/auth/facebook', :class => 'facebook' do
             %i.icon-facebook-sign.icon-3x
 
+          %small
+            = link_to 'en', :locale=>'en'
+            = '|'
+            = link_to 'ru', :locale=>'ru'
+
+
         %ul.nav.nav-tabs
           %li
-            = link_to 'Categories', categories_path
+            = link_to t('.categories'), categories_path
           %li
-            = link_to 'All boobs', show_all_path
+            = link_to t('.all_boobs'), show_all_path
           %li
-            = link_to 'All comments'
+            = link_to t('.all_comments')
           %li
-            = link_to 'User actions'
+            = link_to t('.user_actions')
 
     #global
       = yield

@@ -14,6 +14,9 @@ Rack::Handler::WEBrick = Rack::Handler.get(:puma)
 
 module Gallery
   class Application < Rails::Application
+    #config.i18n.locale = :ru
+    #config.i18n.default_locale = :ru
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -34,7 +37,7 @@ module Gallery
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
+    config.i18n.default_locale = :en
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
