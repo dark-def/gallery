@@ -13,7 +13,7 @@
               = link_to 'All', show_type_path('all', user.id)
               = '|'
             %td
-              = link_to 'navigation', show_type_path('navigation', user.id)
+              = link_to 'navigation', show_type_path('Click on link', user.id)
               = '|'
             %td
               = link_to 'sign in ', show_type_path('sign_in', user.id)
@@ -25,4 +25,10 @@
               = link_to 'likes', show_type_path('likes', user.id)
               = '|'
             %td
-              = link_to 'comments', show_type_path('comments', user.id)
+              = link_to 'subscribe', show_type_path('subscribe', user.id)
+              = '|'
+            %td
+              = link_to 'unsubscribe', show_type_path('unsubscribe', user.id)
+              = '|'
+            %td
+              = link_to 'comments', show_type_path('comment', user.id)
