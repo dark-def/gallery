@@ -11,6 +11,17 @@
         %span.title
           = link_to "Best Boobs", root_path
 
+        -##search
+        -#  .input-group
+        -#    %input.form-control{:type => 'text'}
+        -#    %span.input-group-btn
+        -#      %button.btn.btn-default{:type => 'button'}
+        -#        ='Go!'
+
+
+          -#-form_tag @image do |f|
+            f.input
+
         .pull-right
           %span.login
             -if current_user

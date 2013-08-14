@@ -17,8 +17,8 @@
           = image_tag image.image.url(:thumb)
       .info_block
         %i.icon-comments
-          = image.comments.count
+          = image.comments.size
         %i.icon-heart
-          = image.likes.count
+          = image.likes.size
 
   %b= paginate @images

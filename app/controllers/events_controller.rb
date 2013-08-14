@@ -15,7 +15,6 @@ class EventsController < ApplicationController
       @events = Event.where(:user_id => @user.id, :event => 'comment.create')
     elsif type == 'likes'
       @events = Event.where("event = 'likes.create' OR event = 'likes.destroy'")
-      #@events = Event.where(:user_id => @user.id, :event => 'likes.create')
     else
       @events = Event.where(:user_id => @user.id, :event => type)
     end
