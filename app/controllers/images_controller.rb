@@ -7,7 +7,7 @@ class ImagesController < ApplicationController
   def show
     session[:return_to] = request.fullpath
     @categories = Category.all
-    @image = Image.find(params[:id])
+    @image = Image.includes(:comments, :likes).find(params[:id])
     @comments = @image.comments.page(params[:page]).per(5)
     @user = User.all
   end
@@ -24,7 +24,7 @@ class ImagesController < ApplicationController
   end
 
   def all
-    @images = Image.includes(:likes).order("created_at DESC").page(params[:page]).per(5)
+    @images = Image.includes(:comments,:likes).order("created_at DESC").page(params[:page]).per(5)
   end
 
 

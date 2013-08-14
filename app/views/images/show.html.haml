@@ -11,7 +11,7 @@
     %b
       = 'Like:'
       .like_counter
-        = @image.likes.count
+        = @image.likes.size
 
     .like_buttons
       -if current_user
@@ -23,7 +23,7 @@
             %i.icon-thumbs-down-alt.icon-2x
     %b
       = 'Comments:'
-      = @image.comments.count
+      = @image.comments.size
 
   .comment-form
     .comments
