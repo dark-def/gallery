@@ -11,17 +11,6 @@
         %span.title
           = link_to "Best Boobs", root_path
 
-        -##search
-        -#  .input-group
-        -#    %input.form-control{:type => 'text'}
-        -#    %span.input-group-btn
-        -#      %button.btn.btn-default{:type => 'button'}
-        -#        ='Go!'
-
-
-          -#-form_tag @image do |f|
-            f.input
-
         .pull-right
           %span.login
             -if current_user
@@ -31,10 +20,11 @@
                 %i.icon-signout.icon-3x{ :title => t('.sign_out')}
             -else
               = link_to new_user_session_path do
-                %i.icon-signin.icon-3x{ :title => t('.sign_in') }
-              = link_to t('.registration'), new_user_registration_path
-          = link_to '/auth/facebook', :class => 'facebook' do
-            %i.icon-facebook-sign.icon-3x
+                %i.icon-signin.icon-2x{ :title => t('.sign_in') }
+              = link_to new_user_registration_path do
+                %i.icon-user.icon-2x{ :title => t('.registration') }
+            = link_to '/auth/facebook', :class => 'facebook' do
+              %i.icon-facebook-sign.icon-2x
 
           %small
             = link_to 'en', :locale=>'en'
