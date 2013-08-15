@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :event do
     user_id 1
-    event "MyString"
-    url "MyString"
+    event 'event'
+    url 'localhost:3000'
   end
 end

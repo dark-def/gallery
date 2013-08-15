@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :image do
-    title "MyString"
-    image "MyString"
+    title "must be title of image"
+    image { File.new(Rails.root + 'app/assets/rails.png')}
   end
 end

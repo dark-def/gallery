@@ -66,9 +66,24 @@ describe User do
     it { should validate_presence_of(:email) }
   end
 
+  context 'Valid invalid data for user' do
+
+    it 'blank user email' do
+      user = FactoryGirl.build(:user)
+      user.name = 'bob'
+      user.email = ''
+      user.valid?
+      user.errors[:email].should include "can't be blank"
+    end
+
+    it 'invalid user email' do
+      user = FactoryGirl.build(:user)
+      user.name = 'bob'
+      user.email = 'asdffdsaasdf'
+      user.valid?
+      user.errors[:email].should include "is invalid"
+    end
+
+  end
+
 end
-
-
-#  validates :email,
-#            :presence => true,
-#            :format => {:with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}

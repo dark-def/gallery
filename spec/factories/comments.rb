@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :comment do
-    description "MyString"
+    description 'Simple comment'
     user_id 1
   end
 end
