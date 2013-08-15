@@ -27,3 +27,27 @@
 // .active_admin       applies to any Active Admin namespace
 // .admin_namespace    applies to the admin namespace (eg: /admin)
 // .other_namespace    applies to a custom namespace named other (eg: /other)
+
+//
+.stolen_pics {
+  display: inline-block;
+  height: 300px;
+  width: 225px;
+  max-width: 600px;
+  max-height: 600px;
+  border: 2px solid #929292!important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.images_block {
+  position: relative;
+  width: 220px;
+  height: 270px;
+  display: inline-block;
+}
+
+.image img{
+  width: 220px;
+  height: 220px;
+}

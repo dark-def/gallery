@@ -16,4 +16,4 @@
 //= require gallery
 //= require comment
 //= require like
-
+//= require subscribe

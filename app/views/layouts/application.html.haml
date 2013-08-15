@@ -14,29 +14,39 @@
         .pull-right
           %span.login
             -if current_user
-              = "Hello, #{current_user.email}"
-              = link_to 'Logout', destroy_user_session_path, method: :delete
+              = t('.hello')
+              = current_user.email
+              = link_to destroy_user_session_path, method: :delete do
+                %i.icon-signout.icon-2x{ :title => t('.sign_out')}
             -else
-              = link_to 'Sign in', new_user_session_path
-              = link_to 'Registration', new_user_registration_path
-          = link_to '/auth/facebook', :class => 'facebook' do
-            %i.icon-facebook-sign.icon-3x
+              = link_to new_user_session_path do
+                %i.icon-signin.icon-2x{ :title => t('.sign_in') }
+              = link_to new_user_registration_path do
+                %i.icon-user.icon-2x{ :title => t('.registration') }
+            = link_to '/auth/facebook', :class => 'facebook' do
+              %i.icon-facebook-sign.icon-2x
+
+          %small
+            = link_to 'en', :locale=>'en'
+            = '|'
+            = link_to 'ru', :locale=>'ru'
+
 
         %ul.nav.nav-tabs
           %li
-            = link_to 'Categories'
+            = link_to t('.categories'), categories_path
           %li
-            = link_to 'All boobs'
+            = link_to t('.all_boobs'), show_all_path
           %li
-            = link_to 'All comments'
+            = link_to t('.all_comments')
           %li
-            = link_to 'User actions'
+            = link_to t('.user_actions'), events_path
 
-    = yield
+    #global
+      = yield
 
     #footer
       #footer_nav_block
-        -@categories = Category.all
         -@categories.each do |category|
           .footer_nav_block_items
             %span

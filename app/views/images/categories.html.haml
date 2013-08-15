@@ -1,0 +1,14 @@
+.container_5_img
+  -@category_last_image.each do |cat|
+    .images_block
+      .cat_name
+        %h3
+          %b= cat.title.upcase
+      = link_to show_categories_path(cat.title) do
+        .image-hover
+          .info_block
+            %i.icon-picture
+              .font
+                = cat.images.size
+        .image
+          = image_tag cat.images.first.image.url(:thumb), :class => 'img-circle'

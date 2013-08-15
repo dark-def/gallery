@@ -1,10 +1,18 @@
 .container_img
+  .arrow_left
+    %i.icon-chevron-left.icon-2x
   .img_show
-    = image_tag @image.image, :height => 400, :width => 400
+    = image_tag @image.image, :class => 'img-thumbnail'
+  .arrow_right
+    %i.icon-chevron-right.icon-2x
+
 
   .like_block
-    .like_counter
-      = @image.likes.count
+    %b
+      = 'Like:'
+      .like_counter
+        = @image.likes.size
+
     .like_buttons
       -if current_user
         -if current_user.likes.where("image_id = #{@image.id}").blank?
@@ -13,6 +21,9 @@
         -else
           = link_to i_dont_like_this_path, :remote => true do
             %i.icon-thumbs-down-alt.icon-2x
+    %b
+      = 'Comments:'
+      = @image.comments.size
 
   .comment-form
     .comments
@@ -32,7 +43,7 @@
       -else
         = 'No one commented this boobs yet'
     -if user_signed_in?
-      = form_for [@image, Comment.new], :remote => true, :html => {:class => 'form-inline'} do |f|
+      = form_for [@image, @com = Comment.new], :remote => true, :html => {:class => 'form-inline'} do |f|
         .input-append
           = f.text_field :description, :placeholder => 'Comment'
           = f.submit 'Add comment', class: 'btn btn-primary ', id: 'comment-button'
@@ -46,4 +57,4 @@
       = 'accaunt'
 
     .pagination
-      = paginate @comments
+      %b= paginate @comments

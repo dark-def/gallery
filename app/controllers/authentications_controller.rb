@@ -13,7 +13,7 @@ class AuthenticationsController < ApplicationController
         user.name = auth['info']['name']
       end
       sign_in @user
-      redirect_to session[:return_to], :notice => 'Loggined successfully!'
+      redirect_to categories_path, :notice => 'Loggined successfully!'
     end
 
   end

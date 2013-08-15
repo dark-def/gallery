@@ -12,13 +12,16 @@
 
 class Image < ActiveRecord::Base
 
-  #accepts_nested_attributes_for :comments
-
   attr_accessible :image, :title, :category_id, :description
+
   mount_uploader :image, ImagesUploader
 
   belongs_to :category
 
   has_many :comments
   has_many :likes
+
+  validates :image, :category_id,
+            :presence => true
+
 end

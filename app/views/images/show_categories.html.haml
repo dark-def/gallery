@@ -1,12 +1,30 @@
+.subscribe
+  .sub
+    %b= params[:category].upcase
+  .text_sub
+    %small
+      -if current_user
+        -if current_user.subscribes.where("category_id = #{@category.id}").blank?
+          = link_to 'subscribe', subscribe_path(params[:category]), :remote => true
+        -else
+          = link_to 'unsubscribe', unsubscribe_path(params[:category]), :remote => true ,:class => 'unsibscribe'
+
 .container_5_img
   -@images.each do |image|
     .images_block
-      .image
-        = link_to image_path(image) do
-          = image_tag image.image.url(:thumb)
-      .info_block
-        %i.icon-comments
-          = image.comments.count
-        %i.icon-heart
-          = image.likes.count
-  = paginate @images
+      = link_to image_path(image) do
+        .image-hover
+          .info_block
+            %i.icon-comments.icon-large
+              .font
+                = image.comments.length
+            %i.icon-heart.icon-large
+              .font
+                = image.likes.length
+        .image
+          = image_tag image.image.url(:thumb), :class => 'img-circle'
+
+
+
+
+  %b= paginate @images
