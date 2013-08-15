@@ -8,6 +8,7 @@
         .image-hover
           .info_block
             %i.icon-picture
-              = cat.images.size
+              .font
+                = cat.images.size
         .image
           = image_tag cat.images.first.image.url(:thumb), :class => 'img-circle'
