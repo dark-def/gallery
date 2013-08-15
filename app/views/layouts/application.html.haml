@@ -17,7 +17,7 @@
               = t('.hello')
               = current_user.email
               = link_to destroy_user_session_path, method: :delete do
-                %i.icon-signout.icon-3x{ :title => t('.sign_out')}
+                %i.icon-signout.icon-2x{ :title => t('.sign_out')}
             -else
               = link_to new_user_session_path do
                 %i.icon-signin.icon-2x{ :title => t('.sign_in') }

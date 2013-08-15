@@ -10,7 +10,6 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
-@import "application.css.scss";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -39,4 +38,16 @@
   border: 2px solid #929292!important;
   border-radius: 10px;
   overflow: hidden;
+}
+
+.images_block {
+  position: relative;
+  width: 220px;
+  height: 270px;
+  display: inline-block;
+}
+
+.image img{
+  width: 220px;
+  height: 220px;
 }

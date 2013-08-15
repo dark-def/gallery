@@ -4,10 +4,10 @@
       .cat_name
         %h3
           %b= cat.title.upcase
-
-      .image
-        = link_to show_categories_path(cat.title) do
-          = image_tag cat.images.first.image.url(:thumb)
-      .info_block
-        %i.icon-picture
-          = cat.images.size
+      = link_to show_categories_path(cat.title) do
+        .image-hover
+          .info_block
+            %i.icon-picture
+              = cat.images.size
+        .image
+          = image_tag cat.images.first.image.url(:thumb), :class => 'img-circle'
