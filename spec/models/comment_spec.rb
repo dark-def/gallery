@@ -41,4 +41,18 @@ describe Comment do
     it { should validate_presence_of(:image_id) }
   end
 
+  it 'one symbol description' do
+    comment = FactoryGirl.build(:comment)
+    comment.description = '1'
+    comment.valid?
+    comment.errors[:description].should include "is too short (minimum is 2 characters)"
+  end
+
+  it '1001 symbols description' do
+    comment = FactoryGirl.build(:comment)
+    comment.description = '1'*1001
+    comment.valid?
+    comment.errors[:description].should include "is too long (maximum is 1000 characters)"
+  end
+
 end
