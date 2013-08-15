@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
     @comment.description = params[:comment][:description]
 
     if @comment.save
+      ActiveSupport::Notifications.instrument('comment.create', :user_id => current_user.id, :url => request.fullpath)
       render json: {:comment => @comment, :name => current_user.name ,:stat => 'succ', :location => @image }
     else
       render json: {:error => @comment.errors.messages, :stat => 'error' }

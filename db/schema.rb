@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130806074153) do
+ActiveRecord::Schema.define(:version => 20130812101047) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,17 +52,20 @@ ActiveRecord::Schema.define(:version => 20130806074153) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "categories_images", :id => false, :force => true do |t|
-    t.integer "category_id"
-    t.integer "image_id"
-  end
-
   create_table "comments", :force => true do |t|
     t.string   "description"
     t.integer  "user_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "image_id"
+  end
+
+  create_table "events", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "event"
+    t.string   "url"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "images", :force => true do |t|
@@ -78,6 +81,22 @@ ActiveRecord::Schema.define(:version => 20130806074153) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "simple_captcha_data", :force => true do |t|
+    t.string   "key",        :limit => 40
+    t.string   "value",      :limit => 6
+    t.datetime "created_at",               :null => false
+    t.datetime "updated_at",               :null => false
+  end
+
+  add_index "simple_captcha_data", ["key"], :name => "idx_key"
+
+  create_table "subscribes", :force => true do |t|
+    t.integer  "category_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "users", :force => true do |t|

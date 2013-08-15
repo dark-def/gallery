@@ -28,6 +28,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :uid
 
+  has_many :subscribes
+  has_many :categories, :through => :subscribes
   has_many :comments
   has_many :likes
+  has_many :events
+
+  validates :name,
+            :presence => true,
+            :length => {:minimum => 2, :maximum => 30}
+
+  validates :email,
+            :presence => true,
+            :format => {:with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}
+
 end

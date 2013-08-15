@@ -1,0 +1,39 @@
+table {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+.d1 {
+  min-width: 200px;
+  min-height: 25px;
+  display: inline-block;
+}
+
+.d1:first-child {
+  min-width: 35px;
+}
+
+.d2 {
+  display: inline-block;
+  min-width: 300px;
+}
+
+.d0 {
+  padding: 5px;
+}
+
+.d0:nth-child(odd) {
+  background-color: #474747;
+}
+
+.container_events {
+  padding: 50px 100px 100px 100px;
+}
+
+h1 {
+  padding-bottom: 20px;
+  margin: 0;
+}

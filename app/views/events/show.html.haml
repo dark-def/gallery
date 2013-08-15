@@ -1,0 +1,21 @@
+.container_events
+  %h1
+    = @user.name
+    %small
+      = @user.email
+      -if !@user.provider.blank?
+        = @user.provider
+      = '|'
+      = "Member since #{@user.created_at.strftime('%d/%m/%Y')}"
+    -#= (post.created_at.strftime('%d_%m_%Y'), post)
+
+  -@events.each do |event|
+    .d0
+      .d1
+        %b= event.id
+      .d1
+        = event.event
+      .d2
+        = event.url
+      .d1
+        = event.created_at

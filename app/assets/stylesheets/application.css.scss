@@ -1,6 +1,7 @@
 //= require font-awesome
 //= require gallery
 //= require twitter/bootstrap
+//= require events
 
 @font-face {
   font-family: 'Quicksand';
@@ -23,7 +24,9 @@ html, body {
 }
 
 body {
-  background-color: #929292;
+  box-shadow: inset 0 0 350px rgba(0, 0, 0, 0.9);
+  color: #B3B3B3;
+  background-color: #404040;
 }
 
 blockquote small {
@@ -31,6 +34,10 @@ blockquote small {
 }
 
 .login {
+  margin-right: 10px;
+}
+
+.login icon {
   margin-right: 10px;
 }
 
@@ -71,32 +78,105 @@ blockquote small {
   border: 1px solid red;
 }
 
+.font {
+  display: inline;
+  font-family: Quicksand;
+}
+
 .container_img {
+  min-height: 600px;
   position: relative;
   display: block;
   min-width: 500px;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
+  padding: 25px 0 100px 0;
+  height: auto;
+  overflow: hidden;
+}
+
+.arrow_left, .arrow_right {
+  position: absolute;
+  top: 250px;
+}
+
+.arrow_left {
+  left: -100px;
+}
+
+.arrow_right {
+  right: -100px;
+}
+
+.cat_name {
+  text-align: center;
+}
+
+.error_messages {
+  color: red;
 }
 
 .container_5_img {
-  padding-top: 50px;
+  padding-top: 125px;
   position: relative;
   display: block;
   min-width: 500px;
   width: 85%;
   margin: 0 auto;
+  padding-bottom: 30px;
+}
+
+.like_block {
+  display: inline-block;
+  margin-left: 20px;
 }
 
 .img_show {
+  width: 420px;
+  height: auto;
   float: left;
 }
 
 .images_block {
+  position: relative;
+  width: 220px;
+  height: 270px;
   display: inline-block;
 }
 
+.image img{
+  width: 220px;
+  height: 220px;
+}
+
+.image {
+  display: inline-block;
+}
+
+.image-hover {
+  opacity: 0;
+  width: 220px;
+  height: 220px;
+  position: absolute;
+  border-radius: 50%;
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.image-hover:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.7);
+  -webkit-transition: 0.2s ease-in-out;
+  -moz-transition: 0.2s ease-in-out;
+  -o-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
 .info_block {
+  color: #B3B3B3;
+  margin-top: 50%;
   text-align: center;
 }
 
@@ -106,6 +186,7 @@ blockquote small {
 }
 
 .comment-form {
+  width: 500px;
   padding: 20px;
   position: relative;
   float: left;
@@ -130,6 +211,46 @@ blockquote small {
 
 }
 
+.pull-right a{
+  //color: inherit;
+  text-decoration: none;
+}
+
+#global {
+  //margin-bottom: 30px;
+  min-height: 650px;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.subscribe {
+  text-align: center;
+  font-size: 46px;
+  position: relative;
+  margin: 40px 0 -50px 0;
+  z-index: 3;
+}
+
+.unsibscribe {
+  color: #7B7B7B!important;
+}
+
+.subscribe a {
+  color: inherit;
+}
+
+.sub {
+  line-height: 1;
+}
+
+.text_sub {
+  position: relative;
+  font-size: 26px;
+  line-height: 0.1;
+}
+
+
 
 //FOOTER
 
@@ -142,8 +263,7 @@ blockquote small {
   z-index: 1;
   border-top: 3px solid black;
   width: 100%;
-  position: absolute;
-  bottom: 0;
+  position: relative;
   min-height: 100px;
   background-color: #515151;
 }

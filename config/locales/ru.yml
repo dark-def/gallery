@@ -1,0 +1,15 @@
+# Sample localization file for Rus. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+ru:
+  layouts:
+    application:
+      hello: 'Привет,'
+      sign_out: 'Выйти'
+      sign_in: 'Войти'
+      registration: 'Регистрация'
+
+      categories: 'Категории'
+      all_boobs: 'Все сиськи'
+      all_comments: 'Все комментарии'
+      user_actions: 'Действия пользователя'

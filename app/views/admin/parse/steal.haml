@@ -1,0 +1,36 @@
+-#= form_tag( parsed_save_path, method: 'post') do
+-#
+-#  -@images.each do |link|
+-#    .stolen_pics
+-#      .images_block
+-#        .image
+-#          = image_tag link
+-#
+-#        = check_box_tag(:checked_image)
+-#        = select_tag('category', options_for_select(@categories.collect do |cat| [cat.title] end))
+-#  = submit_tag("Add")
+
+%h2= @images.count
+-@images.each_with_index do |link, index|
+  .stolen_pics
+    .images_block
+      .image
+        = image_tag link
+        = form_for Image.new, url: { action: 'save'}, :remote => true do |f|
+          = f.select_tag(:category_name, options_for_select(@categories.collect do |cat| [cat.title] end))
+          = f.hidden_field :url, :value => link
+          = f.submit "Add", :id => [index]
+
+  -#<%= form_for @article, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  -#  <%= f.text_field :title %>
+  -#  <%= f.text_area :body, size: "60x12" %>
+  -#  <%= f.submit "Create" %>
+  -#<% end %>
+
+
+  -#= submit 'add'#, parsed_save_path
+  -#= link_to 'SAVE', parsed_save_path, :class => 'btn btn-primary'
+  -#= paginate @images
+
+  -#Parameters: {"utf8"=>"✓", "authenticity_token"=>"7lxX/eK8gWVFTzupukmMhxsWTNE1ze2HrJ8iJKQ4LJ8=",
+  -#"category"=>"ruby", "checked_image"=>"1", "commit"=>"Add"}
