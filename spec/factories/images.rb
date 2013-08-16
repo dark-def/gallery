@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :image do
     title "must be title of image"
-    image { File.new(Rails.root + 'app/assets/rails.png')}
+    image { File.new(Rails.root + 'app/assets/images/rails.png')}
+    category_id 1
   end
 end
