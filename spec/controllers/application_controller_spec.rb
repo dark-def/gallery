@@ -4,52 +4,30 @@ describe ApplicationController do
 
   describe 'methods' do
 
-    it 'authenticate_user?' do
-      post :create, {:image_id => 1, :comment => {:description => 'simple text'} }
-      response.should redirect_to('http://test.host/users/sign_in')
-    end
-
-    it 'create' do
+    it 'event/write' do
+      @user = FactoryGirl.create(:user)
       sign_in @user
       expect{
-        FactoryGirl.create(:comment, :user_id => @user.id, :description => 'simple text', :image_id => '1')
-      }.to change(Comment,:count).by(1)
-    end
-
-    it 'if saved' do
-      sign_in @user
-      expect{
-        Event.create(:url => 'images/1/comments', :user_id => '1', :event => 'comment.create')
+        Event.create(:url => 'images/1/comments', :user_id => @user.id, :event => 'comment.create')
       }.to change(Event,:count).by(1)
+    end
+
+    it 'event/not write' do
+      expect{
+        Event.create(:url => 'images/1/comments', :event => 'comment.create')
+      }.to_not change(Event,:count).by(1)
+    end
+
+    it 'set locale if params isset' do
+      params = Hash.new
+      params[:locale] = 'en'.to_sym
+      expect(I18n.locale).to eq(params[:locale])
+    end
+
+    it 'set locale if no params' do
+      expect(I18n.locale).to eq(I18n.default_locale)
     end
 
   end
 
 end
-
-#
-#class ApplicationController < ActionController::Base
-#
-#  before_filter :set_locale
-#  after_filter :click_links
-#
-#  protect_from_forgery
-#
-#  include SimpleCaptcha::ControllerHelpers
-#
-#  def set_locale
-#    I18n.locale = params[:locale] || I18n.default_locale
-#  end
-#
-#  def default_url_options(options={})
-#    #logger.debug "default_url_options is passed options: #{options.inspect}\n"
-#    { :locale => I18n.locale }
-#  end
-#
-#  def click_links
-#    if current_user
-#      ActiveSupport::Notifications.instrument('click_links', :user_id => current_user.id, :url => request.fullpath)
-#    end
-#  end
-#
-#end
