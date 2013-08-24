@@ -20,7 +20,7 @@ Gallery::Application.routes.draw do
 
   devise_for :users, :controllers => {:registration => 'registrations',:sessions => 'sessions'}
 
-  resources :images, only: [:index, :show, :categories, :show_categories] do
+  resources :images, only: [:show, :categories, :show_categories] do
     resources :comments, only: [:new, :create]
   end
 
