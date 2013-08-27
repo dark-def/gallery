@@ -15,10 +15,7 @@ describe LikesController do
 
   it 'create' do
     sign_in @user
-    post :create, {:id => @image.id }
-    expect{
-      FactoryGirl.create(:like, :user_id => @user.id, :image_id => @image.id)
-    }.to change(Like,:count).by(1)
+    expect{ post :create, {:id => @image.id } }.to change(Like,:count).by(1)
   end
 
   it 'if saved' do
@@ -69,6 +66,14 @@ describe LikesController do
     expect{
       Event.create(:url => "images/#{@image.id}/", :user_id => @user.id, :event => 'like.destroy')
     }.to change(Event,:count).by(1)
+  end
+
+  it 'route create' do
+    expect(:get => "images/#{@image.id}/like/").to route_to(:action => 'create', :controller => 'likes', :id => "#{@image.id}")
+  end
+
+  it 'route destroy' do
+    expect(:get => "images/#{@image.id}/dislike/").to route_to(:action => 'destroy', :controller => 'likes', :id => "#{@image.id}")
   end
 
 end

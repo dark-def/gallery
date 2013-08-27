@@ -4,11 +4,7 @@ class SubscribesController < ApplicationController
 
   def create
 
-
-    logger.info '='*150
     category = Category.where(:title => params[:title]).first
-    logger.info '='*150
-    #user_id = current_user.id
     @subscribe = Subscribe.new
     @subscribe.category_id = category.id
     @subscribe.user_id = current_user.id

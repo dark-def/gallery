@@ -101,13 +101,3 @@ describe ImagesController do
   end
 
 end
-
-
-#class ImagesController < ApplicationController
-#
-#  def all
-#    @images = Image.includes(:comments,:likes).order("created_at DESC").page(params[:page]).per(5)
-#  end
-#
-#
-#end
