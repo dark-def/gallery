@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_filter :set_locale
+  before_filter :set_return, :except => [:create]
   after_filter :click_links
 
   protect_from_forgery
@@ -9,6 +10,10 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def set_return
+    session[:return_to] = request.fullpath
   end
 
   def default_url_options(options={})
