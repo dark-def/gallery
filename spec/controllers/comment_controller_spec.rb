@@ -53,23 +53,21 @@ describe CommentsController do
       response.body.should  eq(@json)
     end
 
-    #it 'if not saved' do
-    #  post :create, {:image_id => @image.id }
-    #  @json = {
-    #      :error  => @comment,
-    #      :name     => @user.name,
-    #      :stat    => 'succ',
-    #      :location => @image
-    #  }.to_json
-    #end                      Проверь здесь неудачную отправку коммента, точнее рендер jsona при провале
+    it 'if not saved' do
+      sign_in @user
+      post :create, {:image_id => @image.id, :comment => {:description => '1'}, :user_id => @user.id }
+
+      body = JSON.parse(response.body)
+      errors = body['error']
+
+      @json = {
+          :error  => errors,
+          :stat => 'error',
+      }.to_json
+
+      response.body.should  eq(@json)
+    end
 
   end
 
 end
-
-#if @comment.save
-#  ActiveSupport::Notifications.instrument('comment.create', :user_id => current_user.id, :url => request.fullpath)
-#  render json: {:comment => @comment, :name => current_user.name ,:stat => 'succ', :location => @image }
-#else
-#  render json: {:error => @comment.errors.messages, :stat => 'error' }
-#end
