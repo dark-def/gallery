@@ -12,8 +12,6 @@ ActiveAdmin.register_page "Parse" do
     doc.css("img").each_with_index do |item, index|
       @images[index] = item['src']
     end
-    #@images = Kaminari.paginate_array(@images2).page(params[:page]).per(25)
-    #@images.page(params[:page]).per(20)
     render :layout => 'active_admin'
   end
 
