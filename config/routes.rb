@@ -12,12 +12,6 @@ Gallery::Application.routes.draw do
 
   get '/events/' => 'events#index', :as => :events
   get '/events/:type/:id' => 'events#show', :as => :show_type
-  #get '/events/all/:id' => 'events#show', :as => :events_all
-  #get '/events/navigation/:id' => 'events#show', :as => :events_navigation
-  #get '/events/sign_in/:id' => 'events#show', :as => :events_sign_in
-  #get '/events/sign_out/:id' => 'events#show', :as => :events_sign_out
-  #get '/events/likes/:id' => 'events#show', :as => :events_likes
-  #get '/events/comments/:id' => 'events#show', :as => :events_comments
 
   root :to => 'images#index'
 
@@ -25,10 +19,9 @@ Gallery::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :controllers => {:registration => 'registrations',:sessions => 'sessions'}
-  #resources :subscribe, only: [:create, :destroy]
-  resources :images, only: [:index, :show, :categories, :show_categories] do
+
+  resources :images, only: [:show, :categories, :show_categories] do
     resources :comments, only: [:new, :create]
-    #resources :likes, only: [:create, :destroy]
   end
 
   get '/all' => 'images#all', :as => :show_all

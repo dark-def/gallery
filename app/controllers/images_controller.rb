@@ -1,9 +1,5 @@
 class ImagesController < ApplicationController
 
-  def index
-    @categories = Category.all
-  end
-
   def show
     session[:return_to] = request.fullpath
     @categories = Category.all
@@ -14,7 +10,6 @@ class ImagesController < ApplicationController
 
   def categories
     @category_last_image = Category.includes(:images).all
-    #@cat = category.inject({}) { |res, elem| res[elem.images.last] ||= []; res[elem.images.last.title]; res  }.to_a
   end
 
   def show_categories
