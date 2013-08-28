@@ -18,4 +18,8 @@ class Category < ActiveRecord::Base
 
   validates :title, :presence=> true
 
+  def self.find_categories
+    find(:all)
+  end
+
 end

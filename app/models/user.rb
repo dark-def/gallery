@@ -26,7 +26,9 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :uid
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :uid, :provider, :encrypted_password,
+                  :reset_password_token, :reset_password_sent_at, :remember_created_at, :current_sign_in_at, :last_sign_in_at,
+                  :current_sign_in_ip, :last_sign_in_ip
 
   has_many :subscribes
   has_many :categories, :through => :subscribes
@@ -41,5 +43,7 @@ class User < ActiveRecord::Base
   validates :email,
             :presence => true,
             :format => {:with => /\A[^@]+@([^@\.]+\.)+[^@\.]+\z/}
+
+  validates_uniqueness_of :email
 
 end

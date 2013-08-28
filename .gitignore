@@ -13,7 +13,11 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
 /.idea
 /public/uploads
+/public/cache
 /pic_dir
+.rspec
+/coverage
 
