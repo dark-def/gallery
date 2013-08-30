@@ -11,15 +11,12 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'less-rails-bootstrap', '~> 3.0.0.wip', github: 'sinfin/less-rails-bootstrap-3'
-  #gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 
 end
 gem 'hirb'
 gem 'therubyracer'
 gem 'gon'
 gem 'rabl-rails'
-
-#gem 'jquery-ui-rails'
 gem 'jquery-rails', '~> 2.3.0'
 gem 'bootstrap-sass'
 gem 'devise'

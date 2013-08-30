@@ -1,9 +1,6 @@
 $(document).ready(function(){
 
-
     $(document).ajaxSuccess(function(event, response, settings)  {
-
-
 
         if (response.responseJSON.stat == 'succ'){
         // IF BEFORE WE GOT INVALID ERRORS CLEAN THEM BEFORE

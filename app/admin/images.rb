@@ -3,6 +3,8 @@ ActiveAdmin.register Image do
   index do
     column :id
     column :title
+    column :likes_count
+    column :comments_count
     column 'category' do |img|
       img.category.title
     end

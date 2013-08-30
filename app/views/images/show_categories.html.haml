@@ -17,14 +17,11 @@
           .info_block
             %i.icon-comments.icon-large
               .font
-                = image.comments.length
+                = image.comments_count
             %i.icon-heart.icon-large
               .font
-                = image.likes.length
+                = image.likes_count
         .image
           = image_tag image.image.url(:thumb), :class => 'img-circle'
-
-
-
 
   %b= paginate @images

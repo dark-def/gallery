@@ -14,8 +14,8 @@ Rack::Handler::WEBrick = Rack::Handler.get(:puma)
 
 module Gallery
   class Application < Rails::Application
-    config.action_controller.perform_caching = true
-    config.action_controller.cache_store = :file_store, "#{Rails.root}/public/cache"
+    #config.action_controller.perform_caching = true
+    #config.action_controller.cache_store = :file_store, "#{Rails.root}/public/cache"
     #config.i18n.locale = :ru
     #config.i18n.default_locale = :ru
 

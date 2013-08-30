@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
   attr_accessible :description, :user_id, :image_id
 
   belongs_to :user
-  belongs_to :image
+  belongs_to :image, :counter_cache => true
 
   validates :description,
             :length => {:minimum => 2, :maximum => 1000}
