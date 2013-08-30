@@ -166,6 +166,7 @@ blockquote small {
 }
 
 .image-hover:hover {
+  box-shadow: 0 0 10px 1px black;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.7);
   -webkit-transition: 0.2s ease-in-out;
