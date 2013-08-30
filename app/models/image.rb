@@ -2,12 +2,14 @@
 #
 # Table name: images
 #
-#  id          :integer          not null, primary key
-#  title       :string(255)
-#  image       :string(255)
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  category_id :integer
+#  id             :integer          not null, primary key
+#  title          :string(255)
+#  image          :string(255)
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#  category_id    :integer
+#  likes_count    :integer          default(0)
+#  comments_count :integer          default(0)
 #
 
 class Image < ActiveRecord::Base

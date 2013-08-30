@@ -4,10 +4,10 @@
       = link_to image_path(image) do
         .image-hover
           .info_block
-            %i.icon-comments.icon-2x
-              = image.comments.length
-            %i.icon-heart.icon-2x
-              = image.likes.length
+            %i.icon-comments.icon-large
+              = image.comments_count
+            %i.icon-heart.icon-large
+              = image.likes_count
         .image
           = image_tag image.image.url(:thumb), :class => 'img-circle'
 

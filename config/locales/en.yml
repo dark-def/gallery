@@ -2,7 +2,6 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-
   layouts:
     application:
       hello: 'Hello,'
@@ -14,3 +13,9 @@ en:
       all_boobs: 'All boobs'
       all_comments: 'All comments'
       user_actions: 'User actions'
+
+      ruby: 'ruby'
+      tits: 'tits'
+      cats: 'cats'
+      alcohol: 'alcohol'
+      christmas: 'christmas'

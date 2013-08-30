@@ -1,0 +1,13 @@
+.container_events
+  -@comments.each do |comment|
+    .d0
+      .d1
+        %b= comment.id
+      .d1
+        = comment.description
+      .d2
+        = comment.user.name
+      .d1
+        = image_tag comment.image.image.url(:thumb), :width => 50
+      .d1
+        = comment.created_at
