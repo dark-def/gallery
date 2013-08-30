@@ -30,6 +30,4 @@ Gallery::Application.routes.draw do
   get '/images/:id/like' => 'likes#create', :as => :i_like_this
   get '/:category' => 'images#show_categories', :as => :show_categories
 
-
-
 end

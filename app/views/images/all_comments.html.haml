@@ -1,14 +1,4 @@
 .container_events
-  -#%h1
-    = @user.name
-    %small
-      = @user.email
-      -if !@user.provider.blank?
-        = @user.provider
-      = '|'
-      = "Member since #{@user.created_at.strftime('%d/%m/%Y')}"
-    -#= (post.created_at.strftime('%d_%m_%Y'), post)
-
   -@comments.each do |comment|
     .d0
       .d1

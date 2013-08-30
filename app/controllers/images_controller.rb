@@ -2,7 +2,6 @@ class ImagesController < ApplicationController
 
   def show
     session[:return_to] = request.fullpath
-    #@categories = Category.all
     @image = Image.find(params[:id])
     @comments = @image.comments.page(params[:page]).per(5)
     @user = User.all
