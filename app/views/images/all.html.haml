@@ -5,9 +5,9 @@
         .image-hover
           .info_block
             %i.icon-comments.icon-large
-              = image.comments.length
+              = image.comments_count
             %i.icon-heart.icon-large
-              = image.likes.length
+              = image.likes_count
         .image
           = image_tag image.image.url(:thumb), :class => 'img-circle'
 

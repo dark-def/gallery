@@ -1,5 +1,6 @@
 Gallery::Application.routes.draw do
 
+  get '/all_comments' => 'images#all_comments', :as => :show_all_comments # почему-то снизу он не работает :O
   get '/categories' => 'images#categories', :as => :categories   # почему-то снизу он не работает :O
   get '/auth/:provider/callback' => 'authentications#create' # For socials networks
   get '/auth/destroy' => 'authentications#destroy'
@@ -28,5 +29,7 @@ Gallery::Application.routes.draw do
   get '/images/:id/dislike' => 'likes#destroy', :as => :i_dont_like_this
   get '/images/:id/like' => 'likes#create', :as => :i_like_this
   get '/:category' => 'images#show_categories', :as => :show_categories
+
+
 
 end

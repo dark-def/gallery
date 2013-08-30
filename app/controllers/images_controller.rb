@@ -2,8 +2,8 @@ class ImagesController < ApplicationController
 
   def show
     session[:return_to] = request.fullpath
-    @categories = Category.all
-    @image = Image.includes(:comments, :likes).find(params[:id])
+    #@categories = Category.all
+    @image = Image.find(params[:id])
     @comments = @image.comments.page(params[:page]).per(5)
     @user = User.all
   end
@@ -13,13 +13,16 @@ class ImagesController < ApplicationController
   end
 
   def show_categories
-    @categories = Category.all
     @category = Category.where(:title => "#{params[:category]}").first
-    @images = Image.includes(:comments, :likes).where(:category_id => @category.id).order('created_at DESC').page(params[:page]).per(5)
+    @images = Image.where(:category_id => @category.id).order('created_at DESC').page(params[:page]).per(5)
   end
 
   def all
-    @images = Image.includes(:comments,:likes).order("created_at DESC").page(params[:page]).per(5)
+    @images = Image.order('likes_count DESC').page(params[:page]).per(5)
+  end
+
+  def all_comments
+    @comments = Comment.includes(:user, :image).order("created_at DESC").all
   end
 
 
