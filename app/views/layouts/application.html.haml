@@ -51,7 +51,7 @@
           -Category.find_categories.each do |category|
             .footer_nav_block_items
               %span
-                = link_to category.title.upcase, show_categories_path(category.title)
+                = link_to t(".#{category.title}").mb_chars.upcase, show_categories_path(category.title)
 
       #footer_footer
         = 'Best Boobs 2013(c)'
