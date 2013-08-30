@@ -12,7 +12,8 @@ ActiveAdmin.register_page "Parse" do
     doc.css("img").each_with_index do |item, index|
       @images[index] = item['src']
     end
-    render :layout => 'active_admin'
+    #render :layout => 'active_admin' # сука конченная ересь, орет на симпл капчу
+    render :layout => false
   end
 
 
