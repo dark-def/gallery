@@ -10,9 +10,14 @@ ActiveAdmin.register_page "Parse" do
     doc = Nokogiri::HTML(open(params[:parse][:url]))
 
     doc.css("img").each_with_index do |item, index|
-      @images[index] = item['src']
+      var = item['src'].split('/').first.to_s                     # check for relative path
+      if var == 'http:' || var == 'https:'                        # and don't write it to array
+        @images[index] = item['src']
+      end
+      @images = @images.compact                                   # delete all nil
     end
-    render :layout => 'active_admin'
+    #render :layout => 'active_admin'
+    render :layout => false
   end
 
 
@@ -25,7 +30,7 @@ ActiveAdmin.register_page "Parse" do
 
     title = params[:image][:url].split("/").last
 
-    uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => params[:image][:url].split("/").last)
+    uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => title)
     @image = Image.create!(:image => uploaded_file, :category_id => get_cat.id, :title => title)
     @user_subscribe = @image.category.users.pluck(:email)
     SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
