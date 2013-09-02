@@ -10,7 +10,7 @@ if defined?(Bundler)
 end
 
 require 'rack/handler'
-Rack::Handler::WEBrick = Rack::Handler.get(:puma)
+#Rack::Handler::WEBrick = Rack::Handler.get(:puma)
 
 module Gallery
   class Application < Rails::Application
