@@ -16,8 +16,8 @@ ActiveAdmin.register_page "Parse" do
       end
       @images = @images.compact                                   # delete all nil
     end
-    render :layout => 'active_admin'
-    #render :layout => false
+    #render :layout => 'active_admin'
+    render :layout => false
   end
 
 
@@ -34,7 +34,7 @@ ActiveAdmin.register_page "Parse" do
     @image = Image.create!(:image => uploaded_file, :category_id => get_cat.id, :title => title)
     @user_subscribe = @image.category.users.pluck(:email)
     SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
-    render :json => { :stat => 'succ' }
+    render :json => { :stat => 'succ' }, :layout => 'active_admin'
 
   end
 

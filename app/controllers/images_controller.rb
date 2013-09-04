@@ -24,5 +24,4 @@ class ImagesController < ApplicationController
     @comments = Comment.includes(:user, :image).order("created_at DESC").all
   end
 
-
 end
