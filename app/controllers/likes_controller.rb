@@ -6,13 +6,11 @@ class LikesController < ApplicationController
 
     ActiveSupport::Notifications.instrument('likes.create', :user_id => current_user.id, :url => request.fullpath)
 
-    image_id = params[:id]
-    @like = current_user.likes.build
-    @like.user_id = current_user.id
-    @like.image_id = params[:id]
+    image = Image.where(:id => params[:id]).first
+    @like = Like.create(:user_id => current_user.id, :image_id => image.id)
     if @like.save
-      like_count = Image.find(params[:id]).likes.count
-      render :json => {:status => 'success_added', :like_count => like_count, :image_id => image_id }
+      like_count = image.likes.count
+      render :json => {:status => 'success_added', :like_count => like_count, :image_id => image.id }
     end
   end
 
@@ -20,12 +18,12 @@ class LikesController < ApplicationController
 
     ActiveSupport::Notifications.instrument('likes.destroy', :user_id => current_user.id, :url => request.fullpath)
 
-    image_id = params[:id]
-    like = current_user.likes.where("image_id = #{params[:id]}")
+    image = Image.where(:id => params[:id]).first
+    like = current_user.likes.where(:image_id => image.id)
     if !like.blank?
-      like.delete_all
-      like_count = Image.find(params[:id]).likes.count
-      render :json => {:status => 'success_deleted', :like_count => like_count, :image_id => image_id }
+      image.likes.where(:user_id => current_user.id).destroy_all
+      like_count = image.likes.count
+      render :json => {:status => 'success_deleted', :like_count => like_count, :image_id => image.id }
     else
       render :json => {}
     end

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-//    var like_count
+
     $(document).ajaxSuccess(function(event, response, settings)  {
 
         if (response.responseJSON.status == 'success_added'){
