@@ -17,6 +17,7 @@
 /.idea
 /public/uploads
 /public/cache
+/pic_dir
 .rspec
 /coverage
 

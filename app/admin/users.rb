@@ -7,4 +7,5 @@ ActiveAdmin.register User do
     column :provider
     default_actions
   end
+
 end

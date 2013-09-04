@@ -34,7 +34,4 @@ Gallery::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  # Show full error reports and disable caching
-
-
 end
