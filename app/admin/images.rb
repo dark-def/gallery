@@ -1,6 +1,14 @@
 ActiveAdmin.register Image do
 
+  batch_action :flag do |selection|
+    Image.find(selection).each do |img|
+      img.flag! :hot
+    end
+  end
+
+
   index do
+    selectable_column
     column :id
     column :title
     column :likes_count
