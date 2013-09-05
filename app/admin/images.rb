@@ -6,7 +6,6 @@ ActiveAdmin.register Image do
     end
   end
 
-
   index do
     selectable_column
     column :id
