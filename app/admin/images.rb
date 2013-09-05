@@ -36,11 +36,13 @@ ActiveAdmin.register Image do
       @image = Image.new
       @image.category_id = params[:image][:category_id]
       @image.image = params[:image][:image]
-      @image.title = params[:image][:image].original_filename
+      @image.title = params[:image][:image].original_filename.truncate(50)
 
       if @image.save
         @user_subscribe = @image.category.users.pluck(:email)
-        SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
+        if !@user_subscribe.blank?
+          SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
+        end
         redirect_to admin_image_path(@image), notice: 'image was successfully created.'
       else
         render :new

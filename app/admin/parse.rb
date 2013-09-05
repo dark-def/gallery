@@ -14,10 +14,9 @@ ActiveAdmin.register_page "Parse" do
       if var == 'http:' || var == 'https:'                        # and don't write it to array
         @images[index] = item['src']
       end
-      @images = @images.compact                                   # delete all nil
     end
+    @images = @images.compact                                   # delete all nil
     render :layout => 'active_admin'
-    #render :layout => false
   end
 
 
@@ -28,12 +27,14 @@ ActiveAdmin.register_page "Parse" do
     tempfile = Tempfile.new(Time.now.to_f.to_s)
     tempfile.write curl.body_str.force_encoding('utf-8')
 
-    title = params[:image][:url].split("/").last
+    title = params[:image][:url].split("/").last.truncate(50)
 
     uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => title)
     @image = Image.create!(:image => uploaded_file, :category_id => get_cat.id, :title => title)
     @user_subscribe = @image.category.users.pluck(:email)
-    SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
+    if !@user_subscribe.blank?
+      SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
+    end
     render :json => { :stat => 'succ' }, :layout => 'active_admin'
 
   end
