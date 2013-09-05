@@ -46,7 +46,7 @@
       = form_for [@image, @com = Comment.new], :remote => true, :html => {:class => 'form-inline'} do |f|
         .input-append
           = f.text_field :description, :placeholder => 'Comment'
-          = f.submit 'Add comment', class: 'btn btn-primary ', id: 'comment-button'
+          = f.submit 'Add comment', class: 'btn btn-primary ', id: 'comment-button', data: {disable_with: 'Please wait...'}
     -else
       = 'You need'
       = link_to ' sign in ', new_user_session_path

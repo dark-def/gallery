@@ -17,7 +17,7 @@ class Comment < ActiveRecord::Base
   belongs_to :image, :counter_cache => true
 
   validates :description,
-            :length => {:minimum => 2, :maximum => 1000}
+            :length => {:minimum => 2, :maximum => 255}
 
   validates :user_id, :image_id,
             :presence=> true
