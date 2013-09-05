@@ -9,6 +9,7 @@ class ApplicationController < ActionController::Base
   include SimpleCaptcha::ControllerHelpers
 
   def set_locale
+    expire_fragment 'category'
     I18n.locale = params[:locale] || cookies[:locale] || I18n.default_locale
     cookies[:locale] = I18n.locale
   end

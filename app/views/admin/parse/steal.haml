@@ -3,7 +3,6 @@
   .stolen_pics
     .images_block
       .image
-
         = image_tag link
         = form_for Image.new, url: { action: 'save'}, :remote => true do |f|
           = f.select_tag(:category_name, options_for_select(@categories.collect do |cat| [cat.title] end))

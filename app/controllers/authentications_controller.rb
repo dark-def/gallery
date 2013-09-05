@@ -3,7 +3,7 @@ class AuthenticationsController < ApplicationController
   def create
 
     auth = (env['omniauth.auth'])
-    @user = User.find_or_create_by_uid(:uid => auth['uid'].to_s) do |user|
+      @user = User.find_or_create_by_email(:email => auth['info']['email'].to_s) do |user|
       user.password = Devise.friendly_token[0,20]
       user.email = auth['info']['email']
       user.provider = auth['provider']
