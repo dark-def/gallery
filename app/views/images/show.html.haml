@@ -24,6 +24,23 @@
     %b
       = 'Comments:'
       = @image.comments_count
+    %b
+    .rating
+      %span
+        =link_to '', :mark => '1', :remote => true do
+          %i.icon-star-empty
+      %span
+        =link_to '', :mark => '2', :remote => true do
+          %i.icon-star-empty
+      %span
+        =link_to '', :mark => '3', :remote => true do
+          %i.icon-star-empty
+      %span
+        =link_to '', :mark => '4', :remote => true do
+          %i.icon-star-empty
+      %span
+        =link_to '', :mark => '5', :remote => true do
+          %i.icon-star-empty
 
   .comment-form
     .comments

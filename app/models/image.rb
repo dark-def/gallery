@@ -10,6 +10,7 @@
 #  category_id    :integer
 #  likes_count    :integer          default(0)
 #  comments_count :integer          default(0)
+#  rating         :float
 #
 
 class Image < ActiveRecord::Base
@@ -22,6 +23,7 @@ class Image < ActiveRecord::Base
 
   has_many :comments
   has_many :likes
+  has_many :ratings
 
   validates :image, :category_id,
             :presence => true

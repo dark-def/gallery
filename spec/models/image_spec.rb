@@ -10,6 +10,7 @@
 #  category_id    :integer
 #  likes_count    :integer          default(0)
 #  comments_count :integer          default(0)
+#  rating         :float
 #
 
 require 'spec_helper'
