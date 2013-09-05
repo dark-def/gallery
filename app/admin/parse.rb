@@ -16,8 +16,8 @@ ActiveAdmin.register_page "Parse" do
       end
       @images = @images.compact                                   # delete all nil
     end
-    #render :layout => 'active_admin'
-    render :layout => false
+    render :layout => 'active_admin'
+    #render :layout => false
   end
 
 
