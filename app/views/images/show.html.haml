@@ -30,36 +30,6 @@
         -else
           = render :partial => 'rating_exist'
 
-    -#.rate_block
-    -#  -if current_user && current_user.ratings.where("image_id = #{@image.id}").blank?
-    -#    .rating
-    -#      =link_to rate_this_path(@image.id, '5'), :remote => true do
-    -#        %i.icon-star-empty
-    -#      =link_to rate_this_path(@image.id, '4'), :remote => true do
-    -#        %i.icon-star-empty
-    -#      =link_to rate_this_path(@image.id, '3'), :remote => true do
-    -#        %i.icon-star-empty
-    -#      =link_to rate_this_path(@image.id, '2'), :remote => true do
-    -#        %i.icon-star-empty
-    -#      =link_to rate_this_path(@image.id, '1'), :remote => true do
-    -#        %i.icon-star-empty
-    -#  -else
-    -#    -rate = @image.rating ? @image.rating : 0
-    -#    -i = 0
-    -#    -while i <= 4 do
-    -#      -if i < rate
-    -#        -if (rate.to_i == i) && ((rate - rate.to_i) >= 0.5)
-    -#          %i.icon-star-half-empty
-    -#        -elsif (rate.to_i == i) && ((rate - rate.to_i) < 0.5)
-    -#          %i.icon-star-empty
-    -#        -else
-    -#          %i.icon-star
-    -#      -else
-    -#        %i.icon-star-empty
-    -#      -i += 1
-    -#    -if !@image.rating.blank?
-    -#      = "(#{@image.rating})"
-
   .comment-form
     .comments
       - if !@comments.blank?
