@@ -1,0 +1,15 @@
+-rate = @image.rating ? @image.rating : 0
+-i = 0
+-while i <= 4 do
+  -if i < rate
+    -if (rate.to_i == i) && ((rate - rate.to_i) >= 0.5)
+      %i.icon-star-half-empty
+    -elsif (rate.to_i == i) && ((rate - rate.to_i) < 0.5)
+      %i.icon-star-empty
+    -else
+      %i.icon-star
+  -else
+    %i.icon-star-empty
+  -i += 1
+-if !@image.rating.blank?
+  = "(#{@image.rating})"
