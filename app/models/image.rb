@@ -15,7 +15,7 @@
 
 class Image < ActiveRecord::Base
 
-  attr_accessible :image, :title, :category_id, :description
+  attr_accessible :image, :title, :category_id, :rating ,:description
 
   mount_uploader :image, ImagesUploader
 
