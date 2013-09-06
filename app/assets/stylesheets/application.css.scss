@@ -252,32 +252,34 @@ blockquote small {
 
 // RATING
 
-//.rating {
-//  cursor: pointer;
-//  display: inline-block;
-//  unicode-bidi: bidi-override;
-//  direction: rtl;
-//}
-//
-//.rating > span {
-//  display: inline-block;
-//  position: relative;
-//  width: 1.1em;
-//}
-//
-//.rating > span:hover:before {
-//  color: #428bca;
-//  content: "\2605";
-//  position: absolute;
-//}
-//
-//.rating > span:hover:before,
-//.rating > span:hover ~ span:before {
-//  color: #428bca;
-//  content: "\2605";
-//  position: absolute;
-//}
+.rating {
+  cursor: pointer;
+  display: inline-block;
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
 
+.rating > a {
+  display: inline-block;
+  position: relative;
+  width: 1.1em;
+}
+
+.rating > a:hover:before {
+  content: "\2605";
+  position: absolute;
+}
+
+.rating > a:hover:before,
+.rating > a:hover ~ a:before {
+  color: #428bca;
+  content: "\2605";
+  position: absolute;
+}
+
+.rating > a {
+  text-decoration: none;
+}
 // RATING
 
 
