@@ -10,6 +10,9 @@ Gallery::Application.routes.draw do
   post 'admin/parse' => 'admin/parse#steal' # For parsing
   post 'admin/parse/save' => 'admin/parse#save', :as => :parsed_save # For parsing
 
+  get '/images/:id/dislike' => 'likes#destroy', :as => :i_dont_like_this
+  get '/images/:id/like' => 'likes#create', :as => :i_like_this
+
   get '/images/:id/:mark' => 'ratings#create', :as => :rate_this     #rating
 
   get '/subscribe/:title' => 'subscribes#create', :as => :subscribe
@@ -24,13 +27,10 @@ Gallery::Application.routes.draw do
   devise_for :users, :controllers => {:registration => 'registrations',:sessions => 'sessions'}
 
   resources :images, only: [:show] do
-    #resources :ratings, only: [:create]
     resources :comments, only: [:new, :create]
   end
 
-  get '/all' => 'images#all', :as => :show_all
-  get '/images/:id/dislike' => 'likes#destroy', :as => :i_dont_like_this
-  get '/images/:id/like' => 'likes#create', :as => :i_like_this
+  get '/all/:sort_by' => 'images#all', :as => :show_all
   get '/:category' => 'images#show_categories', :as => :show_categories
 
 end
