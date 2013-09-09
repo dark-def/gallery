@@ -24,6 +24,11 @@
     %b
       = 'Comments:'
       = @image.comments_count
+      .rate_block
+        -if current_user && current_user.ratings.where("image_id = #{@image.id}").blank?
+          = render :partial => 'rating'
+        -else
+          = render :partial => 'rating_exist'
 
   .comment-form
     .comments
