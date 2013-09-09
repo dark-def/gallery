@@ -1,4 +1,6 @@
-%h2= @images.count
+%h3
+  = "result for #{params[:parse][:url]}"
+  %h2= "#{@images.count} images"
 -@images.each_with_index do |link, index|
   .stolen_pics
     .images_block

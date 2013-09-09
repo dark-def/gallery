@@ -15,7 +15,7 @@
           %span.login
             -if current_user
               = t('.hello')
-              = current_user.email
+              = current_user.name
               = link_to destroy_user_session_path, method: :delete do
                 %i.icon-signout.icon-2x{ :title => t('.sign_out')}
             -else
@@ -35,8 +35,21 @@
         %ul.nav.nav-tabs
           %li
             = link_to t('.categories'), categories_path
-          %li
-            = link_to t('.all_boobs'), show_all_path
+          %li.dropdown
+            = link_to t('.all_boobs'), show_all_path('by_comments'), :data => {:toggle => 'dropdown'}
+            %ul.dropdown-menu{"aria-labelledby" => "dropdownMenu1", :role => "menu"}
+              %li.dropdown-header{:role => "presentation", :style => 'color: #B3B3B3; margin-left: 20px;'}
+                = t('.sort_by')
+              %li{:role => "presentation"}
+                = link_to show_all_path('by_comments'), :role => 'menuitem', :tabindex => "-1", :title => t('.by_comments') do
+                  %i.icon-comments.icon-3x{:style => 'color: #B3B3B3'}
+              %li{:role => "presentation"}
+                = link_to show_all_path('by_likes'), :role => 'menuitem', :tabindex => "-1", :title => t('.by_likes') do
+                  %i.icon-heart.icon-3x{:style => 'color: #B3B3B3'}
+              %li{:role => "presentation"}
+                = link_to show_all_path('by_rating'), :role => 'menuitem', :tabindex => "-1", :title => t('.by_rating') do
+                  %i.icon-star.icon-3x{:style => 'color: #B3B3B3;'}
+
           %li
             = link_to t('.all_comments'), show_all_comments_path
           %li

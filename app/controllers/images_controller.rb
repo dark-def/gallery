@@ -17,7 +17,13 @@ class ImagesController < ApplicationController
   end
 
   def all
-    @images = Image.order('likes_count DESC').page(params[:page]).per(5)
+    if params[:sort_by] == 'by_comments'
+      @images = Image.order('comments_count DESC').page(params[:page]).per(5)
+    elsif params[:sort_by] == 'by_likes'
+      @images = Image.order('likes_count DESC').page(params[:page]).per(5)
+    else
+      @images = Image.order('rating ASC').page(params[:page]).per(5)  # нужно поменять порядок(выбирает сначала с меньшим рейтингом)
+    end
   end
 
   def all_comments
