@@ -30,7 +30,10 @@ Gallery::Application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
+  get 'graphs' => 'events#graphs', :as => :graphs
   get '/all/:sort_by' => 'images#all', :as => :show_all
   get '/:category' => 'images#show_categories', :as => :show_categories
+
+
 
 end

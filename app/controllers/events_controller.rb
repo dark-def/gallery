@@ -20,4 +20,8 @@ class EventsController < ApplicationController
     end
   end
 
+  def graphs
+
+  end
+
 end
