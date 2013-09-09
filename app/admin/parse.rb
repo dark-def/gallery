@@ -5,33 +5,32 @@ ActiveAdmin.register_page "Parse" do
 
   page_action :steal, :method => :post do
 
-    @url = params[:parse][:url].split('/')[0..2].join('/').to_s         # get the domain name
+    @url = params[:parse][:url].split('/')[0..2].join('/').to_s             # get the domain name
     @categories = Category.all
     @images = Array.new
 
     doc = Nokogiri::HTML(open(params[:parse][:url]))
 
-    doc.css('a').each_with_index do |item, index|                         # if image warp by 'a'
+    doc.css('a').each_with_index do |item, index|                           # if image warp by 'a'
       begin
         var = item['href'].split('.')                                       # check for .jpg, .png
         if var.last == 'jpg' || var.last == 'jpeg' || var.last == 'png'     # and get it
         @images[index] = item['href']
         end
       rescue
-
+        # if url hasen't .format in the end
       end
-
     end
 
-    doc.css("img").each_with_index do |item, index|
+    doc.css('img').each_with_index do |item, index|
       var = item['src'].split('/').first.to_s                     # check for relative path
       if var == 'http:' || var == 'https:'                        # and don't write it to array
         @images[index] = item['src']
       else
-        p @images[index] = "#{@url}#{(item['src'])}"
+        p @images[index] = "#{@url}#{(item['src'])}"              # if url is relative, join domain name to link
       end
     end
-    @images = @images.compact                                   # delete all nil
+    @images = @images.compact                                     # delete all nil
     render :layout => 'active_admin'
   end
 
