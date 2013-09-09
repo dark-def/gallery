@@ -24,6 +24,10 @@ end
 
 ActiveSupport::Notifications.subscribe 'sign_out' do |name, start, finish, id, payload|
   Event.create(:user_id => payload[:user].id, :event => name)
+  end
+
+ActiveSupport::Notifications.subscribe 'rate' do |name, start, finish, id, payload|
+  Event.create(:url => payload[:url], :user_id => payload[:user_id], :event => name)
 end
 
 ActiveSupport::Notifications.subscribe 'click_links' do |name, start, finish, id, payload|

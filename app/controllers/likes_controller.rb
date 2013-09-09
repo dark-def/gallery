@@ -4,12 +4,11 @@ class LikesController < ApplicationController
 
   def create
 
-    ActiveSupport::Notifications.instrument('likes.create', :user_id => current_user.id, :url => request.fullpath)
-
     image = Image.where(:id => params[:id]).first
     @like = Like.create(:user_id => current_user.id, :image_id => image.id)
     if @like.save
       like_count = image.likes.count
+      ActiveSupport::Notifications.instrument('likes.create', :user_id => current_user.id, :url => request.fullpath)
       render :json => {:status => 'success_added', :like_count => like_count, :image_id => image.id }
     end
   end
