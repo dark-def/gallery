@@ -11,6 +11,10 @@ en:
 
       categories: 'Categories'
       all_boobs: 'All boobs'
+      sort_by: 'Sort by'
+      by_comments: 'Comments'
+      by_likes: 'Likes'
+      by_rating: 'Rating'
       all_comments: 'All comments'
       user_actions: 'User actions'
 
@@ -20,3 +24,4 @@ en:
       alcohol: 'alcohol'
       christmas: 'christmas'
       megan: 'megan'
+
