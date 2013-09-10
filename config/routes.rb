@@ -3,6 +3,7 @@ Gallery::Application.routes.draw do
   root :to => 'images#index'
 
   get '/graphs' => 'events#graphs', :as => :graphs
+  get '/get_graphs' => 'events#get_graphs', :as => :get_graphs
 
   get '/all_comments' => 'images#all_comments', :as => :show_all_comments # почему-то снизу он не работает :O
   get '/categories' => 'images#categories', :as => :categories   # почему-то снизу он не работает :O

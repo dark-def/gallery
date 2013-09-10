@@ -25,12 +25,28 @@ $(document).ready(function(){
 
     function data() {
 
-        return stream_waves(3,10+Math.random()*200,.1).map(function(data, i) {
-            return {
-                key: 'Stream' + i,
-                values: data
-            };
+        $.ajax({
+            url: "/get_graphs",
+//            data: {
+//                simulation: simulation,
+//                from: from,
+//                to: to,
+//                group_by: group_by,
+//                select_graph: select_graph
+//            },
+            dataType: "json",
+            type: "post",
+            success: function(response) {
+                data = response.responseJSON
+            }
         });
+
+//        return stream_waves(3,10+Math.random()*200,.1).map(function(data, i) {
+//            return {
+//                key: 'Stream' + i,
+//                values: data
+//            };
+//        });
 
     }
 //    console.log(data());
@@ -62,18 +78,18 @@ $(document).ready(function(){
 //    }
 
     /* Another layer generator using gamma distributions. */
-    function stream_waves(n, m) {
-        return d3.range(n).map(function(i) {
-            return d3.range(m).map(function(j) {
-                var x = 20 * j / m - i / 3;
-                return 2 * x * Math.exp(-.5 * x);
-            }).map(stream_index);
-        });
-    }
-
-    function stream_index(d, i) {
-        return {x: i, y: Math.max(0, d)};
-    }
+//    function stream_waves(n, m) {
+//        return d3.range(n).map(function(i) {
+//            return d3.range(m).map(function(j) {
+//                var x = 20 * j / m - i / 3;
+//                return 2 * x * Math.exp(-.5 * x);
+//            }).map(stream_index);
+//        });
+//    }
+//
+//    function stream_index(d, i) {
+//        return {x: i, y: Math.max(0, d)};
+//    }
 
 
 }); // document ready
