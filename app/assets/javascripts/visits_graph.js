@@ -3,6 +3,7 @@ $(document).ready(function(){
     nv.addGraph(function() {
         var chart = nv.models.lineWithFocusChart();
 
+
         chart.xAxis
             .tickFormat(d3.format(',f'));
 
@@ -23,13 +24,17 @@ $(document).ready(function(){
     });
 
     function data() {
-        return stream_layers(3,10+Math.random()*200,.1).map(function(data, i) {
+
+        return stream_waves(3,10+Math.random()*200,.1).map(function(data, i) {
             return {
                 key: 'Stream' + i,
                 values: data
             };
         });
+
     }
+//    console.log(data());
+//    console.log(responseJSON);
 
      /**************************************
        * Simple test data generator
@@ -37,24 +42,24 @@ $(document).ready(function(){
 
 
     /* Inspired by Lee Byron's test data generator. */
-    function stream_layers(n, m, o) {
-        if (arguments.length < 3) o = 0;
-        function bump(a) {
-            var x = 1 / (.1 + Math.random()),
-                y = 2 * Math.random() - .5,
-                z = 10 / (.1 + Math.random());
-            for (var i = 0; i < m; i++) {
-                var w = (i / m - y) * z;
-                a[i] += x * Math.exp(-w * w);
-            }
-        }
-        return d3.range(n).map(function() {
-            var a = [], i;
-            for (i = 0; i < m; i++) a[i] = o + o * Math.random();
-            for (i = 0; i < 5; i++) bump(a);
-            return a.map(stream_index);
-        });
-    }
+//    function stream_layers(n, m, o) {
+//        if (arguments.length < 3) o = 0;
+//        function bump(a) {
+//            var x = 1 / (.1 + Math.random()),
+//                y = 2 * Math.random() - .5,
+//                z = 10 / (.1 + Math.random());
+//            for (var i = 0; i < m; i++) {
+//                var w = (i / m - y) * z;
+//                a[i] += x * Math.exp(-w * w);
+//            }
+//        }
+//        return d3.range(n).map(function() {
+//            var a = [], i;
+//            for (i = 0; i < m; i++) a[i] = o + o * Math.random();
+//            for (i = 0; i < 5; i++) bump(a);
+//            return a.map(stream_index);
+//        });
+//    }
 
     /* Another layer generator using gamma distributions. */
     function stream_waves(n, m) {

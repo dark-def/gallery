@@ -21,6 +21,17 @@ class EventsController < ApplicationController
   end
 
   def graphs
+    @sign_in = Event.where(:event => 'sign_in').order('created_at ASC').to_json
+    logger.info '*'*100
+    logger.info @sign_in
+    logger.info '*'*100
+
+    render :graphs
+    #render :json => { :sign_in => @sign_in }
+    #respond_to do |format|
+      #format.html { render :graphs }
+      #format.json { render json: { :sign_in => @sign_in } }
+    #end
 
   end
 
