@@ -1,2 +1,18 @@
 .container_events
-  %svg{:style => 'height:500px'}
+  -#%svg{:style => 'height:500px'}
+  -#%svg{:style => 'height:500px'}
+
+  .circle_graphs
+    .g1
+      #chart1
+        %svg{:style => 'height:250px'}
+    .g1
+      #chart2
+        %svg{:style => 'height:150px'}
+    .g1
+      #chart3
+        %svg{:style => 'height:150px'}
+
+  %h3.graph_title='Event counts'
+  #chart
+    %svg{:style => 'height:350px'}

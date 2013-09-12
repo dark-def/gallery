@@ -2,9 +2,6 @@ Gallery::Application.routes.draw do
 
   root :to => 'images#index'
 
-  get '/graphs' => 'events#graphs', :as => :graphs
-  get '/get_graphs' => 'events#get_graphs', :as => :get_graphs
-
   get '/all_comments' => 'images#all_comments', :as => :show_all_comments # почему-то снизу он не работает :O
   get '/categories' => 'images#categories', :as => :categories   # почему-то снизу он не работает :O
   get '/auth/:provider/callback' => 'authentications#create' # For socials networks
@@ -22,6 +19,10 @@ Gallery::Application.routes.draw do
   get '/unsubscribe/:title' => 'subscribes#destroy', :as => :unsubscribe
 
   get '/events/' => 'events#index', :as => :events
+  get '/events/graphs' => 'events#graphs', :as => :graphs
+  post '/events/get_graphs' => 'events#get_graphs', :as => :get_graphs
+  post '/events/get_counter_graph' => 'events#get_counter_graph', :as => :get_counter_graph
+  post '/events/get_circle_graphs' => 'events#get_circle_graphs', :as => :get_circle_graphs
   get '/events/:type/:id' => 'events#show', :as => :show_type
 
 
@@ -34,9 +35,7 @@ Gallery::Application.routes.draw do
     resources :comments, only: [:new, :create]
   end
 
-
   get '/all/:sort_by' => 'images#all', :as => :show_all
-
   get '/categories/:category' => 'images#show_categories', :as => :show_categories
 
 end
