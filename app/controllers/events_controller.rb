@@ -24,9 +24,11 @@ class EventsController < ApplicationController
 
   end
 
-  def get_graphs
-    @sign_in = Event.where(:event => 'sign_in').order('created_at ASC')#.to_json
-    render :json => { :sign_in => @sign_in }
+  def get_visit_graphs
+    @sign_in =  Event.where("event = 'sign_in'").select("date(created_at) as ordered_date, count(event) as total_number").group("date(created_at)").order("ordered_date ASC")
+    @likes =  Event.where("event = 'likes.create'").select("date(created_at) as ordered_date, count(event) as total_number").group("date(created_at)").order("ordered_date ASC")
+    @comment =  Event.where("event = 'comment.create'").select("date(created_at) as ordered_date, count(event) as total_number").group("date(created_at)").order("ordered_date ASC")
+    render :json => { :sign_in => @sign_in, :likes => @likes, :comment => @comment }
   end
 
   def get_counter_graph

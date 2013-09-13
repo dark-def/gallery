@@ -42,6 +42,13 @@ h1 {
   text-align: center;
 }
 
-//.g3, g2, g1 {
-//  display: inline-block;
-//}
+.circle_graphs {
+  border: 1px solid red;
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+}
+
+.g1 {
+  display: inline-block;
+}
