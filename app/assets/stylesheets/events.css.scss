@@ -30,10 +30,35 @@ td {
 }
 
 .container_events {
+  position: relative;
   padding: 50px 100px 100px 100px;
 }
 
 h1 {
   padding-bottom: 20px;
   margin: 0;
+}
+
+.graph_title {
+  text-align: center;
+}
+
+.circle_graphs {
+  margin: 0 auto;
+  position: relative;
+  display: inline-block;
+}
+
+.g1 {
+  display: inline-block;
+}
+
+.graphs_link {
+
+  position: absolute;
+  right: 100px;
+}
+
+.graphs_link:hover {
+  text-decoration: none;
 }

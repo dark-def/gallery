@@ -1,0 +1,24 @@
+.container_events
+
+  %h3.graph_title='Categories'
+  .circle_graphs
+    .g1
+      %h4.graph_title='Likes'
+      #chart1
+        %svg{:style => 'height:350px; width: 385px'}
+    .g1
+      %h4.graph_title='Comments'
+      #chart2
+        %svg{:style => 'height:350px; width: 385px'}
+    .g1
+      %h4.graph_title='Images'
+      #chart3
+        %svg{:style => 'height:350px; width: 385px'}
+
+  %h3.graph_title='Event counts'
+  #chart
+    %svg{:style => 'height:350px'}
+
+  %h3.graph_title='Users activity'
+  #chart_sign
+    %svg{:style => 'height:350px'}
