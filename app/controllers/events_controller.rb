@@ -52,31 +52,25 @@ class EventsController < ApplicationController
   end
 
   def get_circle_graphs
-    img_size, comments_size, likes_size = Hash.new
+    data = Array.new
     @categories = Category.all
 
     @categories.each do |cat|
-      img_size = {:img_count => cat.images.size }
+      img_size = cat.images.size
 
       comments_count = 0
       cat.images.each do |img|
         comments_count += img.comments.size
       end
-      comments_size = {:comments_size => comments_count }
 
       likes_count = 0
       cat.images.each do |img|
         likes_count += img.likes.size
       end
-      likes_size = {:likes_size => likes_count }
 
-      p
-      p img_size
-      p comments_size
-      p likes_size
+      data[cat.id] = {:category => cat.title, :img_size => img_size , :comments_size => comments_count, :likes_size => likes_count}
     end
-
-    render :json => {:img_size => img_size, :comments_size => comments_size, :likes_size => likes_size }
+    render :json => {:data => data.compact}
 
   end
 
