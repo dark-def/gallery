@@ -17,3 +17,8 @@
 //= require comment
 //= require like
 //= require subscribe
+//= require d3.v3
+//= require nv.d3
+//= require visits_graph
+//= require counters_graph
+//= require circle_graphs
