@@ -28,10 +28,6 @@ $(document).ready(function(){
                 likes.unshift([sign[0][0], 0])
                 comment.unshift([sign[0][0], 0])
                 subscribes.unshift([sign[0][0], 0])
-                console.log(likes);
-                console.log(comment);
-                console.log(sign);
-                console.log(subscribes);
 
                 var data=[
                     {
