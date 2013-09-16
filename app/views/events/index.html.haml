@@ -1,5 +1,6 @@
 .container_events
-  = link_to 'Graphs', graphs_path
+  = link_to graphs_path, :class => 'graphs_link' do
+    %i.icon-bar-chart.icon-4x
   %table
     %tr
       %td

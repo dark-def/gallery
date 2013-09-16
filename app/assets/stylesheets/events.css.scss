@@ -30,6 +30,7 @@ td {
 }
 
 .container_events {
+  position: relative;
   padding: 50px 100px 100px 100px;
 }
 
@@ -50,4 +51,14 @@ h1 {
 
 .g1 {
   display: inline-block;
+}
+
+.graphs_link {
+
+  position: absolute;
+  right: 100px;
+}
+
+.graphs_link:hover {
+  text-decoration: none;
 }
