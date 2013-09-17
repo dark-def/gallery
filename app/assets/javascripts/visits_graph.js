@@ -13,21 +13,21 @@ $(document).ready(function(){
                 var comment = [];
                 var subscribes = [];
                 response.sign_in.map(function(val){
-                    sign.push([ Date.parse(val.ordered_date), val.total_number ]);
+                    sign.push([ Date.parse(val.ordered_date), parseInt(val.total_number) ]);
                 });
                 response.likes.map(function(val){
-                    likes.push([ Date.parse(val.ordered_date), val.total_number ]);
+                    likes.push([ Date.parse(val.ordered_date), parseInt(val.total_number) ]);
                 });
                 response.comment.map(function(val){
-                    comment.push([ Date.parse(val.ordered_date), val.total_number ]);
+                    comment.push([ Date.parse(val.ordered_date), parseInt(val.total_number) ]);
                 });
                 response.subscribes.map(function(val){
-                    subscribes.push([ Date.parse(val.ordered_date), val.total_number ]);
+                    subscribes.push([ Date.parse(val.ordered_date), parseInt(val.total_number) ]);
                 });
-                console.log(likes);
-                console.log(comment);
-                console.log(sign);
-                console.log(subscribes);
+                sign.unshift([sign[0][0], 0])
+                likes.unshift([sign[0][0], 0])
+                comment.unshift([sign[0][0], 0])
+                subscribes.unshift([sign[0][0], 0])
 
                 var data=[
                     {
@@ -51,13 +51,15 @@ $(document).ready(function(){
                 nv.addGraph(function() {
                     var chart = nv.models.cumulativeLineChart()
                         .x(function(d) { return d[0] })
-                        .y(function(d) { return d[1]*100 })
+                        .y(function(d) { return d[1] })
                         .color(d3.scale.category10().range());
 
                     chart.xAxis
                         .tickFormat(function(d) {
                             return d3.time.format('%x')(new Date(d))
                         });
+                    chart.yAxis
+                        .tickFormat(d3.format(',.1'));
 
                     d3.select('#chart_sign svg')
                         .datum(data)
