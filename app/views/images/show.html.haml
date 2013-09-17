@@ -1,14 +1,19 @@
-.container_img
-  .arrow_left
+.arrow_left
+  -if @image_first_id == params[:id].to_i
+    %i.icon-chevron-left.icon-2x
+  -else
     =link_to image_path(params[:id].to_i - 1) do
       %i.icon-chevron-left.icon-2x
-  .img_show
-    = image_tag @image.image, :class => 'img-thumbnail'
-  .arrow_right
+.arrow_right
+  -if @image_last_id == params[:id].to_i
+    %i.icon-chevron-right.icon-2x
+  -else
     =link_to image_path(params[:id].to_i + 1) do
       %i.icon-chevron-right.icon-2x
 
-
+.container_img
+  .img_show
+    = image_tag @image.image, :class => 'img-thumbnail'
   .like_block
     %b
       = 'Like:'
