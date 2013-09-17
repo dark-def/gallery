@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   before_filter :set_locale
-  before_filter :set_return, :except => [:create]
+  after_filter :set_return, :except => [:create]
   after_filter :click_links
 
   protect_from_forgery
