@@ -101,12 +101,16 @@ blockquote small {
   top: 250px;
 }
 
+.arrow_left a:hover, .arrow_right a:hover {
+  text-decoration: none;
+}
+
 .arrow_left {
-  left: -100px;
+  left: 25px;
 }
 
 .arrow_right {
-  right: -100px;
+  right: 25px;
 }
 
 .cat_name {

@@ -1,8 +1,9 @@
 class ImagesController < ApplicationController
 
   def show
-    session[:return_to] = request.fullpath
     @image = Image.find(params[:id])
+    @image_last_id = Image.last.id
+    @image_first_id = Image.first.id
     @comments = @image.comments.page(params[:page]).per(5)
     @user = User.all
   end
