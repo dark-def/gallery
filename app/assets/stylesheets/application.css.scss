@@ -93,12 +93,15 @@ blockquote small {
   margin: 0 auto;
   padding: 25px 0 100px 0;
   height: auto;
-  overflow: hidden;
 }
 
 .arrow_left, .arrow_right {
   position: absolute;
   top: 250px;
+}
+
+.arrow_left a:hover, .arrow_right a:hover {
+  text-decoration: none;
 }
 
 .arrow_left {
