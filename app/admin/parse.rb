@@ -18,11 +18,10 @@ ActiveAdmin.register_page "Parse" do
           @images[index] = item['href']
         end
       rescue
-        # if url hasen't .format in the end
+        # if url haven't .format in the end
       end
     end
-
-    doc.css('img').each_with_index do |item, index|
+    doc.css('img').select{|img| img[:width].to_i > 200}.each_with_index do |item, index|
       var = item['src'].split('/').first.to_s                     # check for relative path
       if var == 'http:' || var == 'https:'                        # and don't write it to array
         @images[index] = item['src']
