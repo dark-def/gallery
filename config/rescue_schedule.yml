@@ -1,0 +1,4 @@
+every_two_minute_job:
+ cron: "*/2 * * * *"
+ class: Output
+ description: “every two minute job”

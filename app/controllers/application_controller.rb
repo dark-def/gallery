@@ -20,7 +20,9 @@ class ApplicationController < ActionController::Base
 
   def click_links
     if current_user
-      ActiveSupport::Notifications.instrument('click_links', :user_id => current_user.id, :url => request.fullpath)
+      #Resque.enqueue(SimpleJob, “Yahoo!”)
+      Resque.enqueue(BGEvents, current_user.id, request.fullpath)
+      #ActiveSupport::Notifications.instrument('click_links', :user_id => current_user.id, :url => request.fullpath)
     end
   end
 
