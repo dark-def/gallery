@@ -15,7 +15,7 @@ ActiveAdmin.register_page "Parse" do
       begin
         var = item['href'].split('.')                                       # check for .jpg, .png
         if var.last == 'jpg' || var.last == 'jpeg' || var.last == 'png'     # and get it
-        @images[index] = item['href']
+          @images[index] = item['href']
         end
       rescue
         # if url hasen't .format in the end
@@ -27,10 +27,11 @@ ActiveAdmin.register_page "Parse" do
       if var == 'http:' || var == 'https:'                        # and don't write it to array
         @images[index] = item['src']
       else
-        p @images[index] = "#{@url}#{(item['src'])}"              # if url is relative, join domain name to link
+        @images[index] = "#{@url}#{(item['src'])}"              # if url is relative, join domain name to link
       end
     end
-    @images = @images.compact                                     # delete all nil
+
+    @images = @images.uniq.compact                                     # delete all nil and left uniq images
     render :layout => 'active_admin'
   end
 
