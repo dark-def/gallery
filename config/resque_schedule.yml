@@ -1,0 +1,4 @@
+Every2min:
+ cron: "*/2 * * * *"
+ class: Every2min
+ description: 'every two minute job'
