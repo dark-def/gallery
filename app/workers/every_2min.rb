@@ -4,7 +4,6 @@ class Every2min# < ApplicationController
   def self.perform()
     p 'Here just started test event 2 minutes'
     p 'successfuly writed'
-    raise ActionController::RoutingError.new('Not Found')
   end
 
 end

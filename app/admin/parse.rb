@@ -26,7 +26,7 @@ ActiveAdmin.register_page "Parse" do
       if var == 'http:' || var == 'https:'                        # and don't write it to array
         @images[index] = item['src']
       else
-        @images[index] = "#{@url}#{(item['src'])}"              # if url is relative, join domain name to link
+        p @images[index] = "#{@url}#{(item['src'])}"              # if url is relative, join domain name to link
       end
     end
 
