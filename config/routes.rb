@@ -38,8 +38,13 @@ Gallery::Application.routes.draw do
   get '/all/:sort_by' => 'images#all', :as => :show_all
   get '/categories/:category' => 'images#show_categories', :as => :show_categories
 
-  unless Rails.application.config.consider_all_requests_local
-    get '*not_found', to: 'errors#error_404'
+  unless Rails.application.config.consider_all_requests_local              #  404
+    get '*not_found', to: 'errors#error_404'                               #  500
+  end                                                                      #  custom pages
+
+  authenticate :admin_user do
+    mount Resque::Server.new, :at => "/resque"
   end
+
 
 end
