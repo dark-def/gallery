@@ -18,13 +18,14 @@ Gallery::Application.routes.draw do
   get '/subscribe/:title' => 'subscribes#create', :as => :subscribe
   get '/unsubscribe/:title' => 'subscribes#destroy', :as => :unsubscribe
 
-  get '/events/' => 'events#index', :as => :events
-  get '/events/graphs' => 'events#graphs', :as => :graphs
-  post '/events/get_visit_graphs' => 'events#get_visit_graphs', :as => :get_visit_graphs
-  post '/events/get_counter_graph' => 'events#get_counter_graph', :as => :get_counter_graph
-  post '/events/get_circle_graphs' => 'events#get_circle_graphs', :as => :get_circle_graphs
-  get '/events/:type/:id' => 'events#show', :as => :show_type
-
+  authenticate :admin_user do
+    get '/events/' => 'events#index', :as => :events
+    get '/events/graphs' => 'events#graphs', :as => :graphs
+    post '/events/get_visit_graphs' => 'events#get_visit_graphs', :as => :get_visit_graphs
+    post '/events/get_counter_graph' => 'events#get_counter_graph', :as => :get_counter_graph
+    post '/events/get_circle_graphs' => 'events#get_circle_graphs', :as => :get_circle_graphs
+    get '/events/:type/:id' => 'events#show', :as => :show_type
+  end
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
@@ -37,5 +38,14 @@ Gallery::Application.routes.draw do
 
   get '/all/:sort_by' => 'images#all', :as => :show_all
   get '/categories/:category' => 'images#show_categories', :as => :show_categories
+
+  unless Rails.application.config.consider_all_requests_local              #  404
+    get '*not_found', to: 'errors#error_404'                               #  500
+  end                                                                      #  custom pages
+
+  authenticate :admin_user do
+    mount Resque::Server.new, :at => "/resque"
+  end
+
 
 end

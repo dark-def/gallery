@@ -222,7 +222,6 @@ blockquote small {
 }
 
 #global {
-  //margin-bottom: 30px;
   min-height: 650px;
   position: relative;
   width: 100%;
@@ -343,4 +342,18 @@ blockquote small {
   height: 25px;
   background-color: black;
   width: 100%;
+}
+
+// FOOTER
+
+
+// 404
+.e404 {
+  text-align: center;
+  display: block;
+}
+
+.title404 {
+  opacity: 0.4;
+  font-size: 350px;
 }
