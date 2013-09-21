@@ -11,7 +11,45 @@ ActiveAdmin.register_page "Dashboard" do
         panel 'Auto Parsed images' do
           @images.each do |img|
             div :class => "parsed_images" do
-               image_tag img.image
+
+              #form do |f|
+              #  f.inputs "Details" do
+              #    f.input :title
+              #    f.input :published_at, :label => "Publish Post At"
+              #    f.input :category
+              #  end
+              #  f.inputs "Content" do
+              #    f.input :body
+              #  end
+              #  f.actions
+              #end
+
+
+              #form_for Image.new, url: { action: 'save'}, :remote => true do |f|
+              #  f.select_tag(:category_name, options_for_select(@categories.collect do |cat| [cat.title] end))
+              #  f.hidden_field :url, :value => link
+              #  f.submit "Add", :id => [index]
+              #end
+              image_tag img.image do
+
+               end
+
+               #= form_for Image.new, url: { action: 'save'}, :remote => true do |f|
+               #  = f.select_tag(:category_name, options_for_select(@categories.collect do |cat| [cat.title] end))
+               #  = f.hidden_field :url, :value => link
+               #  = f.submit "Add", :id => [index]
+
+
+               #.image-hover
+               #.info_block
+               #%i.icon-comments.icon-large
+               #.font
+               #= image.comments_count
+               #%i.icon-heart.icon-large
+               #.font
+               #= image.likes_count
+               #.image
+               #= image_tag image.image.url(:thumb), :class => 'img-circle'
 
             end
 
@@ -51,4 +89,25 @@ ActiveAdmin.register_page "Dashboard" do
   #  end
   #
   end # content
+
+  controller do
+
+    def save
+      get_cat = Category.where(:title => params[:category_name]).first
+      curl =  Curl.get(params[:image][:url])
+      tempfile = Tempfile.new(Time.now.to_f.to_s)
+      tempfile.write curl.body_str.force_encoding('utf-8')
+
+      title = params[:image][:url].split("/").last.truncate(50)
+
+      uploaded_file = ActionDispatch::Http::UploadedFile.new(:tempfile => tempfile, :filename => title)
+      @image = Image.create!(:image => uploaded_file, :category_id => get_cat.id, :title => title)
+      @user_subscribe = @image.category.users.pluck(:email)
+      if !@user_subscribe.blank?
+        SubscribeMailer.send_mail(@image, @image.category.title, @user_subscribe).deliver
+      end
+      render :json => { :stat => 'succ' }, :layout => 'active_admin'
+    end
+
+  end
 end

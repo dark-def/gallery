@@ -35,3 +35,7 @@ namespace :resque do
     #require 'workers/outout'
   end
 end
+
+
+#$ PIDFILE=./resque-scheduler.pid BACKGROUND=yes \
+#    rake resque:scheduler
