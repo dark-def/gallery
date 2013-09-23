@@ -53,33 +53,8 @@
 }
 
 .parsed_images {
+  margin-top: 5px;
+  padding: 12px;
+  border: 1px dashed #929292;
   display: inline-block;
-}
-
-.image-hover {
-  opacity: 0;
-  width: 220px;
-  height: 220px;
-  position: absolute;
-  border-radius: 50%;
-  -webkit-transition: 0.2s ease-in-out;
-  -moz-transition: 0.2s ease-in-out;
-  -o-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.image-hover:hover {
-  box-shadow: 0 0 10px 1px black;
-  opacity: 1;
-  background-color: rgba(0, 0, 0, 0.7);
-  -webkit-transition: 0.2s ease-in-out;
-  -moz-transition: 0.2s ease-in-out;
-  -o-transition: 0.2s ease-in-out;
-  transition: 0.2s ease-in-out;
-}
-
-.info_block {
-  color: #B3B3B3;
-  margin-top: 50%;
-  text-align: center;
 }
