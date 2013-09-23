@@ -35,8 +35,10 @@ class Parser
     @images = @images.uniq.compact                                     # delete all nil and left uniq images
     title = '123'
     @images.each do |tmp_img|
+      p tmp_img.image
       TmpImages.create(:image => tmp_img, :title => title)
     end
+    p 'Job os done!'
 
   end
 
