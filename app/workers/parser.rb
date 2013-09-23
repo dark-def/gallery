@@ -5,10 +5,13 @@ class Parser
   require 'nokogiri'
   require 'open-uri'
 
-  redis = Redis.new(:port => '6379', :host => 'localhost')
+  @redis = Redis.new(:port => '6379', :host => 'localhost')
 
   def self.perform()
-    #prev_result = redis.get('prev_result')
+
+    prev_result = @redis.hgetall('prev_result')
+    p "Prev result = #{prev_result}"
+
     url = 'http://www.nastol.com.ua/tags/girl'
     @images = []
     doc = Nokogiri::HTML(open(url))
@@ -33,11 +36,21 @@ class Parser
     end
 
     @images = @images.uniq.compact                                     # delete all nil and left uniq images
+
+    prev_result.each do |key, value|
+      @images.each do |key2, value2|
+        if key2 == value
+          @images.delete(key2)
+        end
+      end
+    end
     title = '123'
-    @images.each do |tmp_img|
-      p tmp_img.image
+    @images.each_with_index do |tmp_img, index|
+      p tmp_img
+      @redis.hset('prev_result', "#{index}", "#{tmp_img}")
       TmpImages.create(:image => tmp_img, :title => title)
     end
+
     p 'Job os done!'
 
   end
