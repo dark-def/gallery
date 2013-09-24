@@ -1,10 +1,10 @@
-#Every2min:
-# cron: "*/2 * * * *"
-# class: Every2min
-# description: 'every two minute job'
-
 Parse:
-#  cron: '10 * * * * *'
+#  cron: '* * 6 * * *'
   every: 30s
   class: Parser
-  description: 'get new images every ... '
+  description: 'get new images every 6 hours '
+
+TmpCleaner:
+  cron: '* * * 1 * *'
+  class: TmpCleaner
+  description: 'clear old images'

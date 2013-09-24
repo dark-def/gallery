@@ -12,7 +12,7 @@ class Parser
     prev_result = @redis.hgetall('prev_result')
     p "Prev result = #{prev_result}"
 
-    url = 'http://www.nastol.com.ua/tags/girl'
+    url = 'http://www.nastol.com.ua/devushki/60886-blonde-girl-cute.html'
     @images = []
     doc = Nokogiri::HTML(open(url))
     doc.css('a').each_with_index do |item, index|                           # if image warp by 'a'

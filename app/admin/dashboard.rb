@@ -3,7 +3,6 @@ ActiveAdmin.register_page "Dashboard" do
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-
     @images = TmpImages.all
     @categories = Category.all
 
@@ -18,8 +17,10 @@ ActiveAdmin.register_page "Dashboard" do
               end
 
               div do
-                form_for [:admin, Image.create], :url => {:action => 'dash_save'}, :remote => true do |f|
-                  f.select_tag(:category_name, options_for_select(@categories.collect do |cat| [cat.title] end))
+                form_for [:admin, Image.new], :url => {:action => 'dash_save'}, :remote => true do |f|
+                  #f.select :category_name,, :as => :select, :collection => Category.all.map{|u| ["#{u.title}", u.id]}
+                  #f.input :category_name, :as => :select, :collection => @categories.map{|u| u.title}
+                  f.select_tag(:category_sname, options_for_select(@categories.collect do |cat| [cat.title] end))
                   f.hidden_field :url, :value => img.image
                   f.submit "Add", :id => img.id
                 end
