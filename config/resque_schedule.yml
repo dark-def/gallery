@@ -1,10 +1,12 @@
 Parse:
-#  cron: '* * 6 * * *'
-  every: 30s
+  cron: '* * 6 * * *'
+#  cron: '* 30 * * * *'
+#  every: 30s
   class: Parser
   description: 'get new images every 6 hours '
 
 TmpCleaner:
+#  cron: '* 30 * * * *'
   cron: '* * * 1 * *'
   class: TmpCleaner
   description: 'clear old images'
