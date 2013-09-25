@@ -27,6 +27,9 @@ Gallery::Application.routes.draw do
     get '/events/:type/:id' => 'events#show', :as => :show_type
   end
 
+  post '/admin/dash_save' => 'admin/dashboard#dash_save'
+  delete '/admin/dashboard/:id' => 'admin/dashboard#delete'
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
 
