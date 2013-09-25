@@ -12,7 +12,7 @@ namespace :resque do
     require 'resque/scheduler'
 
     # you probably already have this somewhere
-    Resque.redis = 'localhost:6379'
+    Resque.redis = 'http://best-boobs.herokuapp.com:6379'
 
     # If you want to be able to dynamically change the schedule,
     # uncomment this line.  A dynamic schedule can be updated via the
