@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
 
   def index
-     @users = User.includes(:events).all
+    @users = User.includes(:events).all
   end
 
   def show

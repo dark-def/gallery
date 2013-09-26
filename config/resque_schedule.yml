@@ -1,7 +1,7 @@
 Parse:
-  cron: '* * 6 * * *'
+  cron: '* * 3 * * *'
 #  cron: '* 30 * * * *'
-#  every: 30s
+#  every: 60s
   class: Parser
   description: 'get new images every 6 hours '
 

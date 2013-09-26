@@ -3,7 +3,6 @@ ActiveAdmin.register_page "Dashboard" do
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-    @im = :admin, Image.new
     @images = TmpImages.order('id DESC').all
     @categories = Category.all
 
@@ -18,36 +17,7 @@ ActiveAdmin.register_page "Dashboard" do
               end
 
               div do
-                form_for [:admin, Image.new], :url => {:action => 'dash_save'}, :remote => true do |f|
-                  #f.select :category_name,, :as => :select, :collection => Category.all.map{|u| ["#{u.title}", u.id]}
-                  #f.input :category_name, :as => :select, :collection => @categories.map{|u| u.title}
-                  #f.input :category_id, :as => :select, :collection => @categories.map(&:title) #
-                  f.select_tag(:category_name, options_from_collection_for_select(@categories, "title", "title"))
-                  f.hidden_field :url, :value => img.image
-                  f.submit "Add", :id => img.id
-                end
-              end
-
-              span do
-                link_to 'Delete',"/admin/dashboard/#{img.id}", :method => :delete, :remote => true
-              end
-
-              div do
-                #semantic_form_for @im, :url => {:action => 'dash_save'}, :remote => true do |f|
-                #  f.inputs do
-                #    f.select_tag(:category_name, options_from_collection_for_select(@categories, "title", "title"))
-                #    f.submit "Add", :id => img.id
-                #    #f.input :category, :as => :select, :collection => @categories.map{|u| u.title}
-                #    #f.input :title
-                #    #f.actions do
-                #    #  submit
-                #    #end
-                #  end
-                #
-                #
-                #
-                #  #f.select_tag(:category_name, options_for_select(@categories.collect do |cat| [cat.title] end))
-                #end
+                render :partial => 'admin/form', :locals => {:img => img, :cat => @categories },:object => @categories
               end
 
             end

@@ -10,6 +10,7 @@
 // Active Admin's got SASS!
 @import "active_admin/mixins";
 @import "active_admin/base";
+@import "font-awesome";
 
 // Overriding any non-variable SASS must be done after the fact.
 // For example, to change the default status-tag color:
@@ -58,4 +59,10 @@
   padding: 12px;
   border: 1px dashed #F4F4F4;
   display: inline-block;
+}
+
+.remove {
+  display: inline;
+  text-decoration: none;
+  float: right;
 }
