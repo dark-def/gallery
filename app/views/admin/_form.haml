@@ -3,5 +3,5 @@
   = f.select_tag(:category_name, options_from_collection_for_select(form, "title", "title"))
   = f.hidden_field :url, :value => img.image
   = f.submit "Add", :id => img.id
-  = link_to "/admin/dashboard/#{img.id}", :method => :delete, :remote => true do
-    %i.icon-remove.icon-2x.remove
+  = link_to "/admin/dashboard/#{img.id}", :method => :delete, :remote => true, :class => 'remove' do
+    %i.icon-remove.icon-2x
