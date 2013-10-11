@@ -22,3 +22,4 @@
 //= require visits_graph
 //= require counters_graph
 //= require circle_graphs
+//= require turbolinks

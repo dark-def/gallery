@@ -16,6 +16,7 @@ group :assets do
   gem 'less-rails-bootstrap', '~> 3.0.0.wip', github: 'sinfin/less-rails-bootstrap-3'
 
 end
+gem 'turbolinks'
 gem 'hirb'
 gem 'therubyracer'
 gem 'gon'
