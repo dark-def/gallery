@@ -45,6 +45,7 @@ describe CommentsController do
       @comment = Comment.last
       @json = {
           :comment  => @comment,
+          :email => Digest::MD5.hexdigest(@user.email),
           :name     => @user.name,
           :stat    => 'succ',
           :location => @image

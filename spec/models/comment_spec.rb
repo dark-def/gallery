@@ -52,7 +52,7 @@ describe Comment do
     comment = FactoryGirl.build(:comment)
     comment.description = '1'*1001
     comment.valid?
-    comment.errors[:description].should include "is too long (maximum is 1000 characters)"
+    comment.errors[:description].should include "is too long (maximum is 255 characters)"
   end
 
 end

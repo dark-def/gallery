@@ -137,7 +137,7 @@ blockquote small {
 }
 
 .img_show {
-  width: 420px;
+  width: 600px;
   height: auto;
   float: left;
 }
@@ -192,7 +192,7 @@ blockquote small {
 }
 
 .comment-form {
-  width: 500px;
+  width: 450px;
   padding: 20px;
   position: relative;
   float: left;
@@ -201,6 +201,11 @@ blockquote small {
 .comment_time {
   position: relative;
   float: right;
+}
+
+.comment_discription {
+  position: relative;
+  top: 10px;
 }
 
 .pagination {

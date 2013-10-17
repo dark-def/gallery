@@ -22,4 +22,12 @@
 //= require visits_graph
 //= require counters_graph
 //= require circle_graphs
-//= require turbolinks
+// require turbolinks // как обычно, сломался темплейт активадмина для user actions и на индексе подгружаются сразу же все пикчи
+
+// Wanna input symbols counter
+$(document).ready(function(){
+
+});
+
+$(document).ready(ready);
+$(document).on('page:load', ready);

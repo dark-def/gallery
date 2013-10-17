@@ -45,6 +45,7 @@
             .comment_name
               -@user.each do |user|
                 -if user.id == comment.user_id
+                  = image_tag avatar_url(user), :class => 'img-circle'
                   = user.name
               %small.comment_time
                 = time_ago_in_words comment.created_at
@@ -56,9 +57,12 @@
         = 'No one commented this boobs yet'
     -if user_signed_in?
       = form_for [@image, @com = Comment.new], :remote => true, :html => {:class => 'form-inline'} do |f|
-        .input-append
-          = f.text_field :description, :placeholder => 'Comment'
-          = f.submit 'Add comment', class: 'btn btn-primary ', id: 'comment-button', data: {disable_with: 'Please wait...'}
+        .col-lg-18
+          .input-group
+            = f.text_field :description, :placeholder => 'Comment', :class => 'form-control'
+            %span.input-group-btn
+              %button.btn.btn-primary{type: "submit", data: {disable_with: 'Please wait...'} } Add comment
+              -#= f.submit 'Add comment', class: 'btn btn-primary', id: 'comment-button', data: {disable_with: 'Please wait...'}
     -else
       = 'You need'
       = link_to ' sign in ', new_user_session_path

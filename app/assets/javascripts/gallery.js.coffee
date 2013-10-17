@@ -6,3 +6,6 @@ $(document).ready ->
   setInterval (->
     jQuery("#fader :first-child").fadeTo(500, 0).hide().next("img").fadeTo(500, 1).end().appendTo "#fader"
   ), 7500
+
+#$(document).ready(ready)
+$(document).on('page:load', ready)
